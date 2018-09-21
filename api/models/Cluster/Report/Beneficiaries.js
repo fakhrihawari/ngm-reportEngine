@@ -391,7 +391,7 @@ module.exports = {
 		},
 		site_name: {
 			type: 'string',
-			required: true
+			// required: true
 		},
 		site_hub_id: {
 			type: 'string'
@@ -433,11 +433,11 @@ module.exports = {
 		},
 		site_lng: {
 			type: 'float',
-			required: true
+			// required: true
 		},
 		site_lat: {
 			type: 'float',
-			required: true
+			// required: true
 		},
 		
 		admin1lng: {
@@ -577,6 +577,7 @@ module.exports = {
 	// updateOrCreate
 		// http://stackoverflow.com/questions/25936910/sails-js-model-insert-or-update-records
 	updateOrCreateEach: function( parent, values, cb ){
+		
 		var self = this; // reference for use by callbacks
 		// If no values were specified, return []
 		if (!values.length) cb( false, [] );
@@ -587,7 +588,7 @@ module.exports = {
 
 		// values
 		values.forEach(function( value ){
-
+			
 			if( value.id ){
 				self.update({ id: value.id }, value, function( err, update ){
 					if(err) return cb(err, false);
@@ -599,19 +600,36 @@ module.exports = {
 					}
 				});
 			}else{
+				
 				// set based on criteria
 				for ( key in parent ){
 					value[ key ] = parent[ key ];
 				}
-				self.create(value, function( err, create ){
-					if(err) return cb(err, false);
-					results.push( create );
 
+				//old
+				// self.create(value, function( err, create ){
+				// 	if(err) return cb(err, false);				
+				// 	results.push( create );
+
+				// 	counter++;
+				// 	if( counter===length ){
+				// 		cb( false, results );
+				// 	}
+				// });
+				
+				//updated
+				self.create(values).exec(function (err, values) {
+					if (err) { //returns if an error has occured,						
+						cb(err, false);
+					} 
+					
+					results.push(values);
 					counter++;
-					if( counter===length ){
+					if (counter === length) {
 						cb( false, results );
-					}
-				});
+					}						
+					
+				})
 			}
 
 		});

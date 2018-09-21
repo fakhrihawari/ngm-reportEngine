@@ -326,11 +326,11 @@ module.exports = {
     },
 		site_lng: {
 			type: 'float',
-			required: true
+			// required: true
 		},
 		site_lat: {
 			type: 'float',
-			required: true
+			// required: true
 		},
 
 		// admin
@@ -448,6 +448,35 @@ module.exports = {
 			});
 
 		});
+
+	},
+
+	updateOrCreate: function (values, cb) {
+		var self = this; // reference for use by callbacks
+		// If no values were specified, return []		
+		if (!values) cb(false, []);
+
+		if (values.id) {
+			// update returns array, need the object
+			self.update({ id: values.id }, values, function (err, update) {
+				if (err) return cb(err, false);
+				
+				cb(false, update[0]);
+			});
+		} else {
+			// old
+			// self.create(values, cb);
+
+			// new
+			self.create(values).exec(function (err, values) {
+				if (err) { //returns if an error has occured,					
+					cb(err, false);
+				} else {
+					
+					cb(false, values);
+				}
+			}
+		)}
 
 	}
 
