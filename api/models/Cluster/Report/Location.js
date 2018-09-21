@@ -264,6 +264,30 @@ module.exports = {
 		},
 
 		// to captire DTM 
+		site_boys:{
+			type: 'integer',
+			defaultsTo: 0,
+		},
+		site_girls:{
+			type: 'integer',
+			defaultsTo: 0,
+		},
+		site_men:{
+			type: 'integer',
+			defaultsTo: 0,
+		},
+		site_women:{
+			type: 'integer',
+			defaultsTo: 0,
+		},
+		site_elderly_men:{
+			type: 'integer',
+			defaultsTo: 0,
+		},
+		site_elderly_women:{
+			type: 'integer',
+			defaultsTo: 0,
+		},
 		site_population:{
 			type: 'integer',
 			defaultsTo: 0
@@ -272,6 +296,8 @@ module.exports = {
 			type: 'integer',
 			defaultsTo: 0
 		},
+
+		// beneficiaries
 		households:{
 			type: 'integer',
 			defaultsTo: 0
