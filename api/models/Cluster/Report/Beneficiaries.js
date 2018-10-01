@@ -599,30 +599,30 @@ module.exports = {
 				length = values.length;
 
 			// values
-			values.forEach(function (value) {
+			values.forEach(function ( value ) {
 
-				if (value.id) {
-					self.update({ id: value.id }, value, function (err, update) {
+				if ( value.id ) {
+					self.update({ id: value.id }, value, function ( err, update ) {
 						if (err) return cb(err, false);
-						results.push(update[0]);
+						results.push( update[0] );
 
 						counter++;
-						if (counter === length) {
-							cb(false, results);
+						if ( counter===length ) {
+							cb( false, results );
 						}
 					});
 				} else {
 					// set based on criteria
-					for (key in parent) {
-						value[key] = parent[key];
+					for ( key in parent ) {
+						value[ key ] = parent[ key ];
 					}
-					self.create(value, function (err, create) {
+					self.create(value, function ( err, create ) {
 						if (err) return cb(err, false);
 						results.push(create);
 
 						counter++;
-						if (counter === length) {
-							cb(false, results);
+						if ( counter === length ) {
+								cb(false, results);
 						}
 					});
 				}
