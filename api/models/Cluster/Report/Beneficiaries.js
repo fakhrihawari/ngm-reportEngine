@@ -524,52 +524,52 @@ module.exports = {
 		project_type: {
 			type: 'array'
 		},
-		project_type_other: {
+		project_type_other:{
 			type: 'string'
 		},
 		activity_type: {
 			type: 'array'
 		},
-		activity_description: {
+		activity_description:{
 			type: 'array'
 		},
-		beneficiary_name: {
+		beneficiary_name:{
 			type: 'string'
 		},
-		beneficiary_type: {
+		beneficiary_type:{
 			type: 'string'
 		},
-		penta3_vacc_male_under1: {
+		penta3_vacc_male_under1:{
 			type: 'integer'
 		},
-		penta3_vacc_female_under1: {
+		penta3_vacc_female_under1:{
 			type: 'integer'
 		},
-		skilled_birth_attendant: {
+		skilled_birth_attendant:{
 			type: 'integer'
 		},
-		conflict_trauma_treated: {
+		conflict_trauma_treated:{
 			type: 'integer'
 		},
-		education_topic: {
+		education_topic:{
 			type: 'string'
 		},
-		education_sessions: {
+		education_sessions:{
 			type: 'integer'
 		},
-		education_male: {
+		education_male:{
 			type: 'integer'
 		},
 		education_female: {
 			type: 'integer'
 		},
-		training_topic: {
+		training_topic:{
 			type: 'string'
 		},
-		training_sessions: {
+		training_sessions:{
 			type: 'integer'
 		},
-		training_male: {
+		training_male:{
 			type: 'integer'
 		},
 		training_female: {
