@@ -576,23 +576,23 @@ module.exports = {
 			type: 'integer'
 		}
 
-  },
+	},
 
-  // encrypt password before create, assign org_id
-  // beforeCreate: function ( b, next ) {
+	// encrypt password before create, assign org_id
+	// beforeCreate: function ( b, next ) {
 
-  // 	// add reference for unlinked issue
-  // 	b.location_reference_id = b.location_id.valueOf();
-  // 	next();
+	// 	// add reference for unlinked issue
+	// 	b.location_reference_id = b.location_id.valueOf();
+	// 	next();
 
-  // }
+	// }
 
-  // updateOrCreate
-  	// http://stackoverflow.com/questions/25936910/sails-js-model-insert-or-update-records
+	// updateOrCreate
+		// http://stackoverflow.com/questions/25936910/sails-js-model-insert-or-update-records
 	updateOrCreateEach: function( parent, values, cb ){
 		var self = this; // reference for use by callbacks
 		// If no values were specified, return []
-		if (!values.length) cb(false, []);
+		if (!values.length) cb( false, [] );
 
 		var results = [],
 				counter = 0,
