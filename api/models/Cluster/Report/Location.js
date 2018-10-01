@@ -443,8 +443,8 @@ module.exports = {
 
 					// counter
 					counter++
-					if (counter === length) {
-					cb(false, results);
+					if ( counter === length ) {
+						cb(false, results);
 					}
 			});
 
