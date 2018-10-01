@@ -172,7 +172,7 @@ module.exports = {
 			type: 'array'
 		},
 
-	// SOs
+		// SOs
 		strategic_objectives: {
 			type: 'array'
 		},
@@ -441,16 +441,16 @@ module.exports = {
 					// results
 					results.push( result );
 
-		  // counter
-		  counter++
-		  if (counter === length) {
-			cb(false, results);
-		  }
+					// counter
+					counter++
+					if (counter === length) {
+					cb(false, results);
+					}
+			});
+
 		});
 
-	});
-
-  }
+	}
 
 };
 	

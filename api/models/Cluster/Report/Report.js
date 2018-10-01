@@ -212,7 +212,7 @@ module.exports = {
 
 		/*********** 2016 *************/
 		project_type: {
-		    type: 'array'
+						type: 'array'
 		},
 		project_type_other: {
 			type: 'string'
