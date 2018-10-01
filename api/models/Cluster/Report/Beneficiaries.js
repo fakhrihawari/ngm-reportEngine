@@ -588,47 +588,47 @@ module.exports = {
   // }
 
   // updateOrCreate
-  // http://stackoverflow.com/questions/25936910/sails-js-model-insert-or-update-records
-  updateOrCreateEach: function (parent, values, cb) {
-    var self = this; // reference for use by callbacks
-    // If no values were specified, return []
-    if (!values.length) cb(false, []);
+  	// http://stackoverflow.com/questions/25936910/sails-js-model-insert-or-update-records
+		updateOrCreateEach: function (parent, values, cb) {
+			var self = this; // reference for use by callbacks
+			// If no values were specified, return []
+			if (!values.length) cb(false, []);
 
-    var results = [],
-      counter = 0,
-      length = values.length;
+			var results = [],
+				counter = 0,
+				length = values.length;
 
-    // values
-    values.forEach(function (value) {
+			// values
+			values.forEach(function (value) {
 
-      if (value.id) {
-        self.update({ id: value.id }, value, function (err, update) {
-          if (err) return cb(err, false);
-          results.push(update[0]);
+				if (value.id) {
+					self.update({ id: value.id }, value, function (err, update) {
+						if (err) return cb(err, false);
+						results.push(update[0]);
 
-          counter++;
-          if (counter === length) {
-            cb(false, results);
-          }
-        });
-      } else {
-        // set based on criteria
-        for (key in parent) {
-          value[key] = parent[key];
-        }
-        self.create(value, function (err, create) {
-          if (err) return cb(err, false);
-          results.push(create);
+						counter++;
+						if (counter === length) {
+							cb(false, results);
+						}
+					});
+				} else {
+					// set based on criteria
+					for (key in parent) {
+						value[key] = parent[key];
+					}
+					self.create(value, function (err, create) {
+						if (err) return cb(err, false);
+						results.push(create);
 
-          counter++;
-          if (counter === length) {
-            cb(false, results);
-          }
-        });
-      }
+						counter++;
+						if (counter === length) {
+							cb(false, results);
+						}
+					});
+				}
 
-    });
+			});
 
-  }
+		}
 
 };
