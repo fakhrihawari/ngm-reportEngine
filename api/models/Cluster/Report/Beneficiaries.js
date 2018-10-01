@@ -164,9 +164,9 @@ module.exports = {
 			type: 'integer',
 			required: true
 		},
-			report_submitted: {
-				type: 'date'
-			},
+		report_submitted: {
+			type: 'date'
+		},
 		reporting_period: {
 			type: 'date',
 			required: true
@@ -255,11 +255,11 @@ module.exports = {
 			type: 'string'
 		},
 
-		package_type_id: {
+		package_type_id:{
 			type: 'string'
 		},
 
-		package_type_name: {
+		package_type_name:{
 			type: 'string'
 		},
 
@@ -284,12 +284,12 @@ module.exports = {
 		},
 
 		// indicator
-		// sessions -> training
-		sessions: {
+			// sessions -> training
+		sessions:{
 			type: 'integer',
 			defaultsTo: 0
 		},
-		// units -> eiewg
+			// units -> eiewg
 		units: {
 			type: 'float',
 			defaultsTo: 0
@@ -309,7 +309,7 @@ module.exports = {
 		},
 
 		// beneficiaries
-		households: {
+		households:{
 			type: 'integer',
 			defaultsTo: 0
 		},
@@ -317,35 +317,35 @@ module.exports = {
 			type: 'integer',
 			defaultsTo: 0
 		},
-		boys: {
+		boys:{
 			type: 'integer',
 			defaultsTo: 0
 		},
-		girls: {
+		girls:{
 			type: 'integer',
 			defaultsTo: 0
 		},
-		men: {
+		men:{
 			type: 'integer',
 			defaultsTo: 0
 		},
-		women: {
+		women:{
 			type: 'integer',
 			defaultsTo: 0
 		},
-		elderly_men: {
+		elderly_men:{
 			type: 'integer',
 			defaultsTo: 0
 		},
-		elderly_women: {
+		elderly_women:{
 			type: 'integer',
 			defaultsTo: 0
 		},
-		total_beneficiaries: {
+		total_beneficiaries:{
 			type: 'integer',
 			defaultsTo: 0
 		},
-		injury_treatment_same_province: {
+		injury_treatment_same_province:{
 			type: 'boolean'
 		},
 		// stores kit details
@@ -511,7 +511,7 @@ module.exports = {
 			via: 'beneficiary_id'
 		},
 
-	// Cash (IRS) association
+		// Cash (IRS) association
 		accountability: {
 			collection: 'accountabilityactivities',
 			via: 'beneficiary_id'
