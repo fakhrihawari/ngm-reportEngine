@@ -370,6 +370,7 @@ module.exports = {
 		project_type_other: {
 			type: 'string'
 		},
+		
   },
 
 	// updateOrCreate
@@ -444,7 +445,7 @@ module.exports = {
 					// counter
 					counter++
 					if ( counter === length ) {
-						cb(false, results);
+						cb( false, results );
 					}
 			});
 
@@ -453,4 +454,3 @@ module.exports = {
 	}
 
 };
-	
