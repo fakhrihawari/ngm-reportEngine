@@ -407,7 +407,8 @@ module.exports = {
     },
     project_type_other: {
       type: 'string'
-    }
+    },
+  },
 
 	// updateOrCreate
 		// http://stackoverflow.com/questions/25936910/sails-js-model-insert-or-update-records
