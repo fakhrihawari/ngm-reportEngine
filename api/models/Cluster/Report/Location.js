@@ -99,10 +99,10 @@ module.exports = {
 			required: true
 		},
 
-	// target_location_reference
-	target_location_reference_id: {
-	  type: 'string'
-	},
+		// target_location_reference
+		target_location_reference_id: {
+			type: 'string'
+		},
 
 		// project
 		project_id: {
@@ -173,95 +173,95 @@ module.exports = {
 		},
 
 	// SOs
-	strategic_objectives: {
-	  type: 'array'
-	},
+		strategic_objectives: {
+			type: 'array'
+		},
 
-	// target beneficiaries
-	category_type: {
-	  type: 'array'
-	},
-	beneficiary_type: {
-	  type: 'array'
-	},
+		// target beneficiaries
+		category_type: {
+			type: 'array'
+		},
+		beneficiary_type: {
+			type: 'array'
+		},
 
-	report_id: {
-	  type: 'string'
-	},
+		report_id: {
+			type: 'string'
+		},
 
-	// report
-	report_active: {
-	  type: 'boolean',
-	  defaultsTo: true
-	},
-	report_status: {
-	  type: 'string',
-	  defaultsTo: 'todo'
-	},
-	report_month: {
-	  type: 'integer',
-	  required: true
-	},
-	report_year: {
-	  type: 'integer',
-	  required: true
-	},
-	report_submitted: {
-	  type: 'date'
-	},
-	reporting_period: {
-	  type: 'date',
-	  required: true
-	},
-	reporting_due_date: {
-	  type: 'date',
-	  required: true
-	},
+		// report
+		report_active: {
+			type: 'boolean',
+			defaultsTo: true
+		},
+		report_status: {
+			type: 'string',
+			defaultsTo: 'todo'
+		},
+		report_month: {
+			type: 'integer',
+			required: true
+		},
+		report_year: {
+			type: 'integer',
+			required: true
+		},
+		report_submitted: {
+			type: 'date'
+		},
+		reporting_period: {
+			type: 'date',
+			required: true
+		},
+		reporting_due_date: {
+			type: 'date',
+			required: true
+		},
 
-	// dtm
-	site_id: {
-	  type: 'string'
-	},
-	site_class: {
-	  type: 'string'
-	},
-	site_status: {
-	  type: 'string'
-	},
-	site_implementation_id: {
-	  type: 'string'
-	},
-	site_implementation_name: {
-	  type: 'string'
-	},
-	site_type_id: {
-	  type: 'string'
-	},
-	site_type_name: {
-	  type: 'string'
-	},
-	site_name: {
-	  type: 'string',
-	  required: true
-	},
-	site_hub_id: {
-	  type: 'string'
-	},
-	site_hub_name: {
-	  type: 'string'
-	},
-	new_site_id: {
-	  type: 'string'
-	},
-	new_site_name: {
-	  type: 'string'
-	},
-	site_list_select_id: {
-	  type: 'string'
-	},
-	site_list_select_name: {
-	  type: 'string'
-	},
+		// dtm
+		site_id: {
+			type: 'string'
+		},
+		site_class: {
+			type: 'string'
+		},
+		site_status: {
+			type: 'string'
+		},
+		site_implementation_id: {
+			type: 'string'
+		},
+		site_implementation_name: {
+			type: 'string'
+		},
+		site_type_id: {
+			type: 'string'
+		},
+		site_type_name: {
+			type: 'string'
+		},
+		site_name: {
+			type: 'string',
+			required: true
+		},
+		site_hub_id: {
+			type: 'string'
+		},
+		site_hub_name: {
+			type: 'string'
+		},
+		new_site_id: {
+			type: 'string'
+		},
+		new_site_name: {
+			type: 'string'
+		},
+		site_list_select_id: {
+			type: 'string'
+		},
+		site_list_select_name: {
+			type: 'string'
+		},
 
 		// to captire DTM 
 		site_boys:{
@@ -335,79 +335,41 @@ module.exports = {
 			required: true
 		},
 
-	// beneficiaries
-	households: {
-	  type: 'integer',
-	  defaultsTo: 0
-	},
-	boys: {
-	  type: 'integer',
-	  defaultsTo: 0
-	},
-	girls: {
-	  type: 'integer',
-	  defaultsTo: 0
-	},
-	men: {
-	  type: 'integer',
-	  defaultsTo: 0
-	},
-	women: {
-	  type: 'integer',
-	  defaultsTo: 0
-	},
-	elderly_men: {
-	  type: 'integer',
-	  defaultsTo: 0
-	},
-	elderly_women: {
-	  type: 'integer',
-	  defaultsTo: 0
-	},
-	site_lng: {
-	  type: 'float',
-	  required: true
-	},
-	site_lat: {
-	  type: 'float',
-	  required: true
-	},
-
-	// admin
-	admin1lng: {
-	  type: 'float',
-	  required: true
-	},
-	admin1lat: {
-	  type: 'float',
-	  required: true
-	},
-	admin2lng: {
-	  type: 'float',
-	  required: true
-	},
-	admin2lat: {
-	  type: 'float',
-	  required: true
-	},
-	admin3lng: {
-	  type: 'float'
-	},
-	admin3lat: {
-	  type: 'float'
-	},
-	conflict: {
-	  type: 'boolean'
-	},
+		// admin
+		admin1lng: {
+			type: 'float',
+			required: true
+		},
+		admin1lat: {
+			type: 'float',
+			required: true
+		},
+		admin2lng: {
+			type: 'float',
+			required: true
+		},
+		admin2lat: {
+			type: 'float',
+			required: true
+		},
+		admin3lng: {
+			type: 'float'
+		},
+		admin3lat: {
+			type: 'float'
+		},
+		conflict: {
+			type: 'boolean'
+		},
 
 
-	/*********** 2016 *************/
-	project_type: {
-	  type: 'array'
-	},
-	project_type_other: {
-	  type: 'string'
-	},
+		/*********** 2016 *************/
+		project_type: {
+			type: 'array'
+		},
+		project_type_other: {
+			type: 'string'
+		},
   },
 
 	// updateOrCreate
