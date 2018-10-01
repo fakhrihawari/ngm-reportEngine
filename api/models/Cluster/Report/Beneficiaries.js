@@ -611,18 +611,18 @@ module.exports = {
 							cb( false, results );
 						}
 					});
-				} else {
+				}else{
 					// set based on criteria
 					for ( key in parent ) {
 						value[ key ] = parent[ key ];
 					}
 					self.create(value, function ( err, create ) {
 						if (err) return cb(err, false);
-						results.push(create);
+						results.push( create );
 
 						counter++;
-						if ( counter === length ) {
-								cb(false, results);
+						if ( counter===length ) {
+								cb( false, results );
 						}
 					});
 				}
