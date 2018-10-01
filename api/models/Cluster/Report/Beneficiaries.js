@@ -67,31 +67,31 @@ module.exports = {
 			type: 'string',
 			required: true
 		},
-			email: {
-				type: 'string',
-				unique: true,
-				required: true
-			},
+		email: {
+			type: 'string',
+			unique: true,
+			required: true
+		},
 		username: {
 			type: 'string',
 			required: true
 		},
 
-			// project
+		// project
 		project_id: {
 			type: 'string',
 			required: true
 		},
-			project_acbar_partner: {
-				type: 'boolean'
-			},
+		project_acbar_partner: {
+			type: 'boolean'
+		},
 		project_hrp_code: {
 			type: 'string',
 			required: true
 		},
-			project_code: {
-				type: 'string'
-			},
+		project_code: {
+			type: 'string'
+		},
 		project_status: {
 			type: 'string',
 			defaultsTo: 'new'
@@ -112,38 +112,38 @@ module.exports = {
 			type: 'date',
 			required: true
 		},
-			project_budget: {
-				type: 'float'
-			},
+		project_budget: {
+			type: 'float'
+		},
 		project_budget_currency: {
 			type: 'string',
 			required: true
 		},
-			mpc_purpose: {
-				type: 'array'
-			},
-			mpc_purpose_cluster_id: {
-				type: 'string'
-			},
-			mpc_purpose_type_id: {
-				type: 'string'
-			},
-			mpc_purpose_type_name: {
-				type: 'string'
-			},
-			inter_cluster_activities: {
-				type: 'array'
-			},
-			project_donor: {
-				type: 'array'
-			},
+		mpc_purpose: {
+			type: 'array'
+		},
+		mpc_purpose_cluster_id: {
+			type: 'string'
+		},
+		mpc_purpose_type_id: {
+			type: 'string'
+		},
+		mpc_purpose_type_name: {
+			type: 'string'
+		},
+		inter_cluster_activities: {
+			type: 'array'
+		},
+		project_donor: {
+			type: 'array'
+		},
 
-			// SOs
-			strategic_objectives: {
-				type: 'array'
-			},
+		// SOs
+		strategic_objectives: {
+			type: 'array'
+		},
 
-			// report
+		// report
 		report_id: {
 			type: 'string',
 			required: true
@@ -176,15 +176,15 @@ module.exports = {
 			required: true
 		},
 
-			// category
-			category_type_id: {
-				type: 'string'
-			},
-			category_type_name: {
-				type: 'string'
-			},
+		// category
+		category_type_id: {
+			type: 'string'
+		},
+		category_type_name: {
+			type: 'string'
+		},
 
-			// beneficiary
+		// beneficiary
 		beneficiary_type_id: {
 			type: 'string',
 			required: true
@@ -193,17 +193,17 @@ module.exports = {
 			type: 'string',
 			required: true
 		},
-			distribution_start_date:{
-				type: 'date',
-			},
-			distribution_end_date:{
-				type: 'date',
-			},
-			distribution_status:{
-				type: 'string'
-			},
+		distribution_start_date:{
+			type: 'date',
+		},
+		distribution_end_date:{
+			type: 'date',
+		},
+		distribution_status:{
+			type: 'string'
+		},
 
-			// activity_type
+		// activity_type
 		activity_type_id: {
 			type: 'string',
 			required: true
@@ -213,7 +213,7 @@ module.exports = {
 			required: true
 		},
 
-			// activity_description
+		// activity_description
 		activity_description_id: {
 			type: 'string',
 			required: true
@@ -223,47 +223,47 @@ module.exports = {
 			required: true
 		},
 
-			// added new 'W' for NG, activities should be planned better
-			activity_detail_id: {
-				type: 'string'
-			},
-			activity_detail_name: {
-				type: 'string'
-			},
+		// added new 'W' for NG, activities should be planned better
+		activity_detail_id: {
+			type: 'string'
+		},
+		activity_detail_name: {
+			type: 'string'
+		},
 
-			// NG cholera response
-			activity_cholera_response_id: {
-				type: 'string'
-			},
-			activity_cholera_response_name: {
-				type: 'string'
-			},
+		// NG cholera response
+		activity_cholera_response_id: {
+			type: 'string'
+		},
+		activity_cholera_response_name: {
+			type: 'string'
+		},
 
-			// indicator that relates to activity for HRP reporting
-			indicator_id: {
-				type: 'string'
-			},
-			indicator_name: {
-				type: 'string'
-			},
+		// indicator that relates to activity for HRP reporting
+		indicator_id: {
+			type: 'string'
+		},
+		indicator_name: {
+			type: 'string'
+		},
 
-			// mpc delivery
-			mpc_delivery_type_id: {
-				type: 'string'
-			},
-			mpc_delivery_type_name: {
-				type: 'string'
-			},
+		// mpc delivery
+		mpc_delivery_type_id: {
+			type: 'string'
+		},
+		mpc_delivery_type_name: {
+			type: 'string'
+		},
 
-			package_type_id: {
-				type: 'string'
-			},
+		package_type_id: {
+			type: 'string'
+		},
 
-			package_type_name: {
-				type: 'string'
-			},
+		package_type_name: {
+			type: 'string'
+		},
 
-			// delivery (population, service)
+		// delivery (population, service)
 		delivery_type_id: {
 			type: 'string',
 			defaultsTo: 'population'
@@ -273,7 +273,7 @@ module.exports = {
 			defaultsTo: 'New Beneficiaries'
 		},
 
-			// transfers per beneficiary
+		// transfers per beneficiary
 		transfer_type_id: {
 			type: 'integer',
 			defaultsTo: 0
@@ -283,32 +283,32 @@ module.exports = {
 			defaultsTo: 0
 		},
 
-			// indicator
-			// sessions -> training
+		// indicator
+		// sessions -> training
 		sessions: {
 			type: 'integer',
 			defaultsTo: 0
 		},
-			// units -> eiewg
+		// units -> eiewg
 		units: {
 			type: 'float',
 			defaultsTo: 0
 		},
-			// units
-			unit_type_id: {
-				type: 'string'
-			},
-			unit_type_name: {
-				type: 'string'
-			},
+		// units
+		unit_type_id: {
+			type: 'string'
+		},
+		unit_type_name: {
+			type: 'string'
+		},
 
-			// conditional/unconditional
+		// conditional/unconditional
 		cash_amount: {
 			type: 'integer',
 			defaultsTo: 0
 		},
 
-			// beneficiaries
+		// beneficiaries
 		households: {
 			type: 'integer',
 			defaultsTo: 0
@@ -345,18 +345,18 @@ module.exports = {
 			type: 'integer',
 			defaultsTo: 0
 		},
-			injury_treatment_same_province: {
-				type: 'boolean'
-			},
-			// stores kit details
-			kit_details: {
-				type: 'array',
-			},
+		injury_treatment_same_province: {
+			type: 'boolean'
+		},
+		// stores kit details
+		kit_details: {
+			type: 'array',
+		},
 
-			// location
-			location_id: {
-				type: 'string'
-			},
+		// location
+		location_id: {
+			type: 'string'
+		},
 		admin1pcode: {
 			type: 'string',
 			required: true
@@ -373,74 +373,74 @@ module.exports = {
 			type: 'string',
 			required: true
 		},
-			admin3pcode: {
-				type: 'string'
-			},
-			admin3name: {
-				type: 'string'
-			},
+		admin3pcode: {
+			type: 'string'
+		},
+		admin3name: {
+			type: 'string'
+		},
 
-			// DTM
-			site_id: {
-				type: 'string'
-			},
-			site_class: {
-				type: 'string'
-			},
-			site_status: {
-				type: 'string'
-			},
-			site_implementation_id: {
-				type: 'string'
-			},
-			site_implementation_name: {
-				type: 'string'
-			},
-			site_type_id: {
-				type: 'string'
-			},
-			site_type_name: {
-				type: 'string'
-			},
-			site_name: {
-				type: 'string',
-				required: true
-			},
-			site_hub_id: {
-				type: 'string'
-			},
-			site_hub_name: {
-				type: 'string'
-			},
-		site_households: {
+		// DTM
+		site_id: {
+			type: 'string'
+		},
+		site_class: {
+			type: 'string'
+		},
+		site_status: {
+			type: 'string'
+		},
+		site_implementation_id: {
+			type: 'string'
+		},
+		site_implementation_name: {
+			type: 'string'
+		},
+		site_type_id: {
+			type: 'string'
+		},
+		site_type_name: {
+			type: 'string'
+		},
+		site_name: {
+			type: 'string',
+			required: true
+		},
+		site_hub_id: {
+			type: 'string'
+		},
+		site_hub_name: {
+			type: 'string'
+		},
+		site_households:{
 			type: 'integer',
 			defaultsTo: 0,
 		},
-		site_population: {
+		site_population:{
 			type: 'integer',
 			defaultsTo: 0,
 		},
-		site_boys: {
+		site_boys:{
 			type: 'integer',
 			defaultsTo: 0,
 		},
-		site_girls: {
+		site_girls:{
 			type: 'integer',
 			defaultsTo: 0,
 		},
-		site_men: {
+		site_men:{
 			type: 'integer',
 			defaultsTo: 0,
 		},
-		site_women: {
+		site_women:{
 			type: 'integer',
 			defaultsTo: 0,
 		},
-		site_elderly_men: {
+		site_elderly_men:{
 			type: 'integer',
 			defaultsTo: 0,
 		},
-		site_elderly_women: {
+		site_elderly_women:{
 			type: 'integer',
 			defaultsTo: 0,
 		},
@@ -469,15 +469,15 @@ module.exports = {
 			type: 'float',
 			required: true
 		},
-			admin3lng: {
-				type: 'float'
-			},
-			admin3lat: {
-				type: 'float'
-			},
-			conflict: {
-				type: 'boolean'
-			},
+		admin3lng: {
+			type: 'float'
+		},
+		admin3lat: {
+			type: 'float'
+		},
+		conflict: {
+			type: 'boolean'
+		},
 
 		/******* WASH NG IRS *******/
 
@@ -493,7 +493,7 @@ module.exports = {
 			via: 'beneficiary_id'
 		},
 
-	// Sanitation (IRS) association
+		// Sanitation (IRS) association
 		sanitation: {
 			collection: 'sanitationactivities',
 			via: 'beneficiary_id'
@@ -560,7 +560,7 @@ module.exports = {
 		education_male:{
 			type: 'integer'
 		},
-		education_female: {
+		education_female:{
 			type: 'integer'
 		},
 		training_topic: {
