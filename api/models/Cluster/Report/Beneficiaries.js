@@ -479,39 +479,39 @@ module.exports = {
 				type: 'boolean'
 			},
 
-			/******* WASH NG IRS *******/
+		/******* WASH NG IRS *******/
 
-			// Water (IRS) association
+		// Water (IRS) association
 		water: {
 			collection: 'wateractivities',
 			via: 'beneficiary_id'
 		},
 
-			// Boreholes (IRS) association
+		// Boreholes (IRS) association
 		boreholes: {
 			collection: 'borehole',
 			via: 'beneficiary_id'
 		},
 
-			// Sanitation (IRS) association
+	// Sanitation (IRS) association
 		sanitation: {
 			collection: 'sanitationactivities',
 			via: 'beneficiary_id'
 		},
 
-			// Hygiene (IRS) association
+		// Hygiene (IRS) association
 		hygiene: {
 			collection: 'hygieneactivities',
 			via: 'beneficiary_id'
 		},
 
-			// Cash (IRS) association
+		// Cash (IRS) association
 		cash: {
 			collection: 'cashactivities',
 			via: 'beneficiary_id'
 		},
 
-			// Cash (IRS) association
+	// Cash (IRS) association
 		accountability: {
 			collection: 'accountabilityactivities',
 			via: 'beneficiary_id'
@@ -519,24 +519,24 @@ module.exports = {
 
 
 
-			/*********** 2016 *************/
-			// Project details
+		/*********** 2016 *************/
+		// Project details
 		project_type: {
 			type: 'array'
 		},
-		project_type_other:{
+		project_type_other: {
 			type: 'string'
 		},
 		activity_type: {
 			type: 'array'
 		},
-		activity_description:{
+		activity_description: {
 			type: 'array'
 		},
-		beneficiary_name:{
+		beneficiary_name: {
 			type: 'string'
 		},
-		beneficiary_type:{
+		beneficiary_type: {
 			type: 'string'
 		},
 		penta3_vacc_male_under1:{
@@ -551,7 +551,7 @@ module.exports = {
 		conflict_trauma_treated:{
 			type: 'integer'
 		},
-		education_topic:{
+		education_topic: {
 			type: 'string'
 		},
 		education_sessions:{
@@ -563,7 +563,7 @@ module.exports = {
 		education_female: {
 			type: 'integer'
 		},
-		training_topic:{
+		training_topic: {
 			type: 'string'
 		},
 		training_sessions:{
@@ -572,7 +572,7 @@ module.exports = {
 		training_male:{
 			type: 'integer'
 		},
-		training_female: {
+		training_female:{
 			type: 'integer'
 		}
 
