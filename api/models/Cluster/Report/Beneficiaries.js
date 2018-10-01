@@ -237,7 +237,7 @@ module.exports = {
 		},
 		activity_cholera_response_name: {
 			type: 'string'
-		},
+		},	
 
 		// indicator that relates to activity for HRP reporting
 		indicator_id: {
@@ -245,7 +245,7 @@ module.exports = {
 		},
 		indicator_name: {
 			type: 'string'
-		},
+		},	
 
 		// mpc delivery
 		mpc_delivery_type_id: {
