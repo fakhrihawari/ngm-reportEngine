@@ -589,12 +589,12 @@ module.exports = {
 
   // updateOrCreate
   	// http://stackoverflow.com/questions/25936910/sails-js-model-insert-or-update-records
-		updateOrCreateEach: function (parent, values, cb) {
-			var self = this; // reference for use by callbacks
-			// If no values were specified, return []
-			if (!values.length) cb(false, []);
+	updateOrCreateEach: function( parent, values, cb ){
+		var self = this; // reference for use by callbacks
+		// If no values were specified, return []
+		if (!values.length) cb(false, []);
 
-			var results = [],
+		var results = [],
 				counter = 0,
 				length = values.length;
 
@@ -629,6 +629,6 @@ module.exports = {
 
 			});
 
-		}
+	}
 
 };
