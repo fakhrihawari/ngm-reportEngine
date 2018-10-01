@@ -10,16 +10,16 @@ module.exports = {
 	// connection
 	connection: 'ngmHealthClusterServer',
 
-  // strict schema
+	// strict schema
 	schema: true,
 
   // attributes
 	attributes: {
-			// region/country
-			adminRpcode: {
-				type: 'string',
-				required: true
-			},
+		// region/country
+		adminRpcode: {
+			type: 'string',
+			required: true
+		},
 			adminRname: {
 				type: 'string',
 				required: true
