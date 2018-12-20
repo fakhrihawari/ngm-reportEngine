@@ -53,6 +53,7 @@ module.exports = {
 						'unit_type_name',
 						'transfer_type_value',
 						'mpc_delivery_type_id',
+						'mpc_mechanism_type_id',
 						'households',
 						'families',
 						'boys',
@@ -95,6 +96,7 @@ module.exports = {
 						'Unit Type',
 						'Cash Transfers',
 						'Cash Delivery Type',
+						'Cash Mechanism Type',
 						'Households',
 						'Families',
 						'Boys',
@@ -125,7 +127,9 @@ module.exports = {
 																response[i].men +
 																response[i].women +
 																response[i].elderly_men +
-																response[i].elderly_women;
+																response[i].elderly_women;														
+						
+						
 					});
 
 					// return csv
@@ -160,6 +164,7 @@ module.exports = {
 						'report_month',
 						'report_year',
 						'cluster',
+						'stock_targeted_groups_name',
 						'stock_item_name',
 						'stock_status_name',
 						'number_in_stock',
@@ -186,6 +191,7 @@ module.exports = {
 						'Stock Month',
 						'Stock Year',
 						'Cluster',
+						'Stock Targeted Groups',
 						'Stock Type',
 						'Status',
 						'No. in Stock',
@@ -208,6 +214,7 @@ module.exports = {
 					// format month
 					response.forEach(function( d, i ){
 						response[i].report_month = moment( response[i].reporting_period ).format( 'MMMM' );
+						
 					});
 
 					// return csv
