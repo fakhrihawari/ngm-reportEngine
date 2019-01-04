@@ -48,8 +48,11 @@ var AdminDashboardController = {
           adminRpcode_filter: req.param( 'adminRpcode' ) === 'all' ? {} : { adminRpcode: req.param( 'adminRpcode' ).toUpperCase() },
           admin0pcode_filter: req.param( 'admin0pcode' ) === 'all' ? {} : { admin0pcode: req.param( 'admin0pcode' ).toUpperCase() },
           start_date: req.param( 'start_date' ),
-          end_date: req.param( 'end_date' )
-      }
+					end_date: req.param( 'end_date' ),
+					usaid_as_donor: req.param( 'usaid_as_donor' ) === 'usaid' ? { project_donor: { $elemMatch: { project_donor_id: "usaid" } } }: {},
+					usaid_as_donorBudget: req.param( 'usaid_as_donor' ) === 'usaid' ? { project_donor_id: "usaid" } : {}
+			}
+
   
   
     // csv export
@@ -86,7 +89,7 @@ var AdminDashboardController = {
           .where( params.adminRpcode_filter )
           .where( params.admin0pcode_filter )
           .where( { reporting_period: { '>=': new Date( params.start_date ), '<=': new Date( params.end_date ) } } )
-          .where( params.organization_filter )
+					.where( params.organization_filter )
           .sort( 'updatedAt DESC' )
           .limit(1)
           .exec( function( err, reports ){
@@ -114,7 +117,7 @@ var AdminDashboardController = {
             .where( params.adminRpcode_filter )
             .where( params.admin0pcode_filter )
             .where( { reporting_period: { '>=': new Date( params.start_date ), '<=': new Date( params.end_date ) } } )
-            .where( params.organization_filter )
+						.where( params.organization_filter )
             .exec( function( err, projects ){
 
               // return error
@@ -186,7 +189,7 @@ var AdminDashboardController = {
           .where( { report_status: [ 'todo', 'complete' ] } )
           .where( { reporting_period: { '>=': new Date( params.start_date ), '<=': new Date( params.end_date ) } } )
           .where( params.organization_filter )
-          .where( { report_active: true } )
+					.where( { report_active: true } )
           .sort('updatedAt DESC')
           .exec( function( err, reports ){
 
@@ -254,7 +257,7 @@ var AdminDashboardController = {
           .where( { report_active: true } )
           .where( { report_status: 'todo' } )
           .where( { reporting_period: { '>=': new Date( params.start_date ), '<=': new Date( params.end_date ) } } )
-          .where( params.organization_filter )
+					.where( params.organization_filter )
           .sort('updatedAt DESC')
           .exec( function( err, reports ){
 
@@ -356,7 +359,7 @@ var AdminDashboardController = {
           .where( { reporting_period: { '>=': new Date( params.start_date ), '<=': new Date( params.end_date ) } } )
           .where( params.organization_filter )
           .where( { report_active: true } )
-          .where( { report_status: 'complete' } )
+					.where( { report_status: 'complete' } )
           .sort('updatedAt DESC')
           .exec( function( err, reports ){
 
@@ -457,7 +460,7 @@ var AdminDashboardController = {
           .where( params.admin0pcode_filter )
           .where( { reporting_period: { '>=': new Date( params.start_date ), '<=': new Date( params.end_date ) } } )
           .where( params.organization_filter )
-          .where( { report_active: true } )
+					.where( { report_active: true } )
           .sort('updatedAt DESC')
           .exec( function( err, total_reports ){
 
@@ -515,7 +518,8 @@ var AdminDashboardController = {
           .where( params.activity_type_id )
           .where( { project_start_date: { '<=': new Date( params.end_date ) } } )
           .where( { project_end_date: { '>=': new Date( params.start_date ) } } )
-          .where( params.organization_filter )
+					.where( params.organization_filter )
+					.where( params.usaid_as_donor )
           .sort( 'updatedAt DESC' )
           .limit(1)
           .exec( function( err, reports ){
@@ -545,7 +549,8 @@ var AdminDashboardController = {
             .where( params.activity_type_id )
             .where( { project_start_date: { '<=': new Date( params.end_date ) } } )
             .where( { project_end_date: { '>=': new Date( params.start_date ) } } )
-            .where( params.organization_filter )
+						.where( params.organization_filter )
+						.where(params.usaid_as_donor)
             .exec( function( err, projects ){
 
               // return error
@@ -618,7 +623,8 @@ var AdminDashboardController = {
           .where( params.activity_type_id )
           .where( { report_status: [ 'todo', 'complete' ] } )
           .where( { reporting_period: { '>=': params.moment( params.start_date ).format('YYYY-MM-DD'), '<=': params.moment( params.end_date ).format('YYYY-MM-DD') } } )
-          .where( params.organization_filter )
+					.where( params.organization_filter )
+					.where(params.usaid_as_donor)
           .sort('updatedAt DESC')
           .exec( function( err, reports ){
 
@@ -688,7 +694,8 @@ var AdminDashboardController = {
                                           '$lte': new Date(params.moment( params.end_date   ).format('YYYY-MM-DD'))
                                         } 
                                       },
-                                      params.organization_filter_Native 
+																			params.organization_filter_Native,
+																			params.usaid_as_donor 
                                   );  
         // reports due
         Report.native(function(err, collection) {
@@ -814,7 +821,8 @@ var AdminDashboardController = {
                                             '$lte': new Date(params.moment( params.end_date   ).format('YYYY-MM-DD'))
                                           } 
                                         },
-                                        params.organization_filter_Native 
+																				params.organization_filter_Native,
+																				params.usaid_as_donor 
                                       );
 
         Report.native(function(err, collection) {
@@ -952,7 +960,8 @@ var AdminDashboardController = {
           .where( { report_active: true } )
           .where( params.activity_type_id )
           .where( { reporting_period: { '>=': params.moment( params.start_date ).format('YYYY-MM-DD'), '<=': params.moment( params.end_date ).format('YYYY-MM-DD') } } )
-          .where( params.organization_filter )
+					.where( params.organization_filter )
+					.where( params.usaid_as_donor )
           .sort('updatedAt DESC')
           .exec( function( err, total_reports ){
 
@@ -970,7 +979,8 @@ var AdminDashboardController = {
               .where( params.activity_type_id )
               .where( { report_status: 'complete' } )
               .where( { reporting_period: { '>=': params.moment( params.start_date ).format('YYYY-MM-DD'), '<=': params.moment( params.end_date ).format('YYYY-MM-DD') } } )
-              .where( params.organization_filter )
+							.where( params.organization_filter )
+							.where( params.usaid_as_donor )
               .sort('updatedAt DESC')
               .exec( function( err, reports ){
 
@@ -992,7 +1002,6 @@ var AdminDashboardController = {
         // fields
         var fields = [ 'cluster', 'organization', 'admin0name', 'project_title', 'project_description', 'project_hrp_code', 'project_budget', 'project_budget_currency', 'project_donor_name', 'grant_id', 'currency_id', 'project_budget_amount_recieved', 'contribution_status', 'project_budget_date_recieved', 'budget_funds_name', 'financial_programming_name', 'multi_year_funding_name', 'funding_2017', 'reported_on_fts_name', 'fts_record_id', 'email', 'createdAt', 'comments' ]
             fieldNames = [ 'Cluster', 'Organization', 'Country', 'Project Title', 'Project Description', 'HRP Project Code', 'Project Budget', 'Project Budget Currency', 'Project Donor', 'Donor Grant ID', 'Currency Recieved', 'Ammount Received', 'Contribution Status', 'Date of Payment', 'Incoming Funds', 'Financial Programming', 'Multi-Year Funding', '2017 Funding', 'Reported on FTS', 'FTS ID', 'Email', 'createdAt', 'Comments' ];
-
         // get beneficiaries by project
         BudgetProgress
           .find()
@@ -1003,7 +1012,8 @@ var AdminDashboardController = {
           .where( params.activity_type_id )
           .where( params.acbar_partners_filter )
           .where( params.organization_filter )
-          .where( { project_budget_date_recieved: { '>=': new Date( params.start_date ), '<=': new Date( params.end_date ) } } )
+					.where( { project_budget_date_recieved: { '>=': new Date( params.start_date ), '<=': new Date( params.end_date ) } } )
+					.where( params.usaid_as_donorBudget)
           .exec( function( err, budget ){
 
             // return error
@@ -1057,13 +1067,15 @@ var AdminDashboardController = {
 						project_startDateNative: { project_start_date: { $lte: new Date(req.param('end_date')) }},
 						project_endDateNative: { project_end_date: { $gte: new Date(req.param('start_date')) }},
 						default_native: { project_id: { $ne: null }},
-						activity_typeNative: req.param('activity_type_id') === 'all' ? {} : { 'activity_type.activity_type_id': req.param('activity_type_id') }
+						activity_typeNative: req.param('activity_type_id') === 'all' ? {} : { 'activity_type.activity_type_id': req.param('activity_type_id') },
+						usaid_as_donor: req.param('usaid_as_donor') === 'usaid' ? { project_donor: { $elemMatch: { project_donor_id: "usaid" } } } : {}
 						// organization_default_Native: { organization_tag: { $nin: $nin_organizations } }
 					}
 				}
 				var filters = filter(params);
 				var filterObject = _.extend({},
 					filters.default_native,
+					filters.usaid_as_donor,
 					filters.adminRpcode_Native,
 					filters.admin0pcode_Native,
 					filters.cluster_id_Native,
