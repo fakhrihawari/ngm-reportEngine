@@ -565,6 +565,36 @@ module.exports = {
 			type: 'string'
 		},
 
+		//FSC
+		hh_surveyed: {
+			type:'integer',
+			defaultsTo: 0
+		},
+		hh_acceptable: {
+			type: 'integer',
+			defaultsTo: 0
+		},
+		hh_acceptable_pmd: {
+			type: 'integer',
+			defaultsTo: 0
+		},
+		hh_borderline: {
+			type: 'integer',
+			defaultsTo: 0
+		},
+		hh_borderline_pmd: {
+			type: 'integer',
+			defaultsTo: 0
+		},
+		hh_poor: {
+			type: 'integer',
+			defaultsTo: 0
+		},
+		hh_poor_pmd: {
+			type: 'integer',
+			defaultsTo: 0
+		},
+
 
 
 		/*********** 2016 *************/
