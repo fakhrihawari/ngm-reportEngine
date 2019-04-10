@@ -376,6 +376,9 @@ module.exports = {
 				if (req.body.organization_tag){
 					fileDescriptor.organization_tag = req.body.organization_tag;
 				}
+				if (req.body.organization_id) {
+					fileDescriptor.organization_id = req.body.organization_id;
+				}
 				if (req.body.cluster_id){
 					fileDescriptor.cluster_id = req.body.cluster_id;
 				}
@@ -409,7 +412,7 @@ module.exports = {
 		allowed_params = [ 'project_id','report_id','organization_tag','cluster_id','admin0pcode','adminRpcode', 'start_date', 'end_date', 'type' ];
 		
 		// types of documents
-		types = { monthly:'monthly', project: 'project', weekly: 'weekly', custom: 'custom', all: 'all' };
+		types = { monthly: 'monthly', project: 'project', stock: 'stock', weekly: 'weekly', custom: 'custom', all: 'all' };
 
 		// query params value for all docs
 		ALL   = 'all' ;
