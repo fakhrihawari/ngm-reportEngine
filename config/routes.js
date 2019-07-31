@@ -286,6 +286,11 @@ module.exports.routes = {
 	'GET /drought/afghanistan/beneficiaries/data': 'Country/Afg/Drought/DroughtDashboardController.getDroughtData',
 	'POST /drought/afghanistan/beneficiaries/data': 'Country/Afg/Drought/DroughtDashboardController.getDroughtData',
 
+	'POST /immap/report/getReportsList': 'Cluster/Reports/ReportController.getDummyReportList',
+	'POST /immap/report/getDummyReport': 'Cluster/Reports/ReportController.getDummyReport', 
+	'POST /immap/report/getLicenseDummyList': 'Cluster/Reports/ReportController.getLicenseDummyList',
+
+
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
