@@ -1102,7 +1102,157 @@ var ReportController = {
 			}];
 		return res.json(200, list);
 	},
-
+	getTeamLicenseDummyList:function(req,res){
+		list=[]
+		var request=[{
+			id: 'asdfasdsdfasdfasdfadfa',
+			admin0name: 'Afghanistan',
+			admin0pcode: 'AF',
+			adminRpcode: 'EMRO',
+			email: 'dummyzero@immap.org',
+			expired_date: '2019-05-01',
+			license_id: 'adobe_reader',
+			license_name: 'Adobe Reader',
+			name: 'fharifin',
+			organization: 'iMMAP',
+			organization_tag: 'immap',
+			start_date: '2019-05-01',
+			status: 'REQUESTED',
+			username: 'dummzero',
+		}, {
+				id: 'asdfasdsdfasdfasdfadfa',
+				admin0name: 'Afghanistan',
+				admin0pcode: 'AF',
+				adminRpcode: 'EMRO',
+				email: 'dummyzero@immap.org',
+				expired_date: '2019-05-01',
+				license_id: 'adobe_reader',
+				license_name: 'Adobe Reader',
+				name: 'fharifin',
+				organization: 'iMMAP',
+				organization_tag: 'immap',
+				start_date: '2019-05-01',
+				status: 'REQUESTED',
+				username: 'dummzero',
+			}, {
+				id: 'asdfasdsdfasdfasdfadfa',
+				admin0name: 'Afghanistan',
+				admin0pcode: 'AF',
+				adminRpcode: 'EMRO',
+				email: 'dummyzero@immap.org',
+				expired_date: '2019-05-01',
+				license_id: 'adobe_reader',
+				license_name: 'Adobe Reader',
+				name: 'fharifin',
+				organization: 'iMMAP',
+				organization_tag: 'immap',
+				start_date: '2019-05-01',
+				status: 'REQUESTED',
+				username: 'dummzero',
+			}];
+		var active =[{
+				id: 'asdfsdwasd',
+				admin0name: 'Afghanistan',
+				admin0pcode: 'AF',
+				adminRpcode: 'EMRO',
+				email: 'dummyzero@immap.org',
+				expired_date: '2019-05-02',
+				license_id: 'adobe_photoshop',
+				license_name: 'Adobe Photoshop',
+				name: 'fharifin',
+				organization: 'iMMAP',
+				organization_tag: 'immap',
+				start_date: '2019-05-02',
+				status: 'ACTIVE',
+				username: 'dummzero',
+		}, {
+				id: 'asdfsdwasd',
+				admin0name: 'Afghanistan',
+				admin0pcode: 'AF',
+				adminRpcode: 'EMRO',
+				email: 'dummyzero@immap.org',
+				expired_date: '2019-05-02',
+				license_id: 'adobe_photoshop',
+				license_name: 'Adobe Photoshop',
+				name: 'fharifin',
+				organization: 'iMMAP',
+				organization_tag: 'immap',
+				start_date: '2019-05-02',
+				status: 'ACTIVE',
+				username: 'dummzero',
+			}, {
+				id: 'asdfsdwasd',
+				admin0name: 'Afghanistan',
+				admin0pcode: 'AF',
+				adminRpcode: 'EMRO',
+				email: 'dummyzero@immap.org',
+				expired_date: '2019-05-02',
+				license_id: 'adobe_photoshop',
+				license_name: 'Adobe Photoshop',
+				name: 'fharifin',
+				organization: 'iMMAP',
+				organization_tag: 'immap',
+				start_date: '2019-05-02',
+				status: 'ACTIVE',
+				username: 'dummzero',
+			}]; 
+		var terminated=[{
+				id:'asdfasd',
+				admin0name: 'Afghanistan',
+				admin0pcode: 'AF',
+				adminRpcode: 'EMRO',
+				email: 'dummyzero@immap.org',
+				expired_date: '2019-05-03',
+				license_id: 'adobe_indesign',
+				license_name: 'Adobe Indesign',
+				name: 'fharifin',
+				organization: 'iMMAP',
+				organization_tag: 'immap',
+				start_date: '2019-05-03',
+				status: 'TERMINATED',
+				username: 'dummzero',
+			},{
+					id: 'asdfasd',
+					admin0name: 'Afghanistan',
+					admin0pcode: 'AF',
+					adminRpcode: 'EMRO',
+					email: 'dummyzero@immap.org',
+					expired_date: '2019-05-03',
+					license_id: 'adobe_indesign',
+					license_name: 'Adobe Indesign',
+					name: 'fharifin',
+					organization: 'iMMAP',
+					organization_tag: 'immap',
+					start_date: '2019-05-03',
+					status: 'TERMINATED',
+					username: 'dummzero',
+			},{
+					id: 'asdfasd',
+					admin0name: 'Afghanistan',
+					admin0pcode: 'AF',
+					adminRpcode: 'EMRO',
+					email: 'dummyzero@immap.org',
+					expired_date: '2019-05-03',
+					license_id: 'adobe_indesign',
+					license_name: 'Adobe Indesign',
+					name: 'fharifin',
+					organization: 'iMMAP',
+					organization_tag: 'immap',
+					start_date: '2019-05-03',
+					status: 'TERMINATED',
+					username: 'dummzero',
+			}];
+		if (req.param('status') === 'request'){
+			list = request;
+		}
+		if (req.param('status') === 'active'){
+			list = active;
+		}
+		if(req.param('status') === 'terminated'){
+			list = terminated;
+		}
+		return res.json(200, list);
+	}
 
 
 };

@@ -289,6 +289,7 @@ module.exports.routes = {
 	'POST /immap/report/getReportsList': 'Cluster/Reports/ReportController.getDummyReportList',
 	'POST /immap/report/getDummyReport': 'Cluster/Reports/ReportController.getDummyReport', 
 	'POST /immap/report/getLicenseDummyList': 'Cluster/Reports/ReportController.getLicenseDummyList',
+	'POST /immap/report/getTeamLicenseDummyList': 'Cluster/Reports/ReportController.getTeamLicenseDummyList'
 
 
   /***************************************************************************
