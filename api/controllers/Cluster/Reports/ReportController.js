@@ -1252,8 +1252,23 @@ var ReportController = {
 			list = terminated;
 		}
 		return res.json(200, list);
+	},
+	getProductDummyIndicator:function(req,res){
+		var chart=[]
+		var sector_chart = [{
+			color: "#f48fb1", label: 1407, name: "WASH", y: 54.29992892679459
+		}, { color: "#90caf9", label: 1407, name: "Health", y: 45.7000710732054 }];
+		var type_chart = [{
+			color: "#f48fb1", label: 1407, name: "Map", y: 54.29992892679459
+		}, { color: "#90caf9", label: 1407, name: "Dashboard", y: 45.7000710732054 }];
+		if (req.param('indicator') ==='sector_chart'){
+			chart= sector_chart;
+		}
+		if (req.param('indicator') === 'type_chart'){
+			chart = type_chart;
+		}
+		return res.json(200,chart)
 	}
-
 
 };
 
