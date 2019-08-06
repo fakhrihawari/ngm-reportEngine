@@ -1267,7 +1267,16 @@ var ReportController = {
 		if (req.param('indicator') === 'type_chart'){
 			chart = type_chart;
 		}
-		return res.json(200,chart)
+		if (req.param('indicator') === 'products'){
+			return res.json(200, { value: 1 })
+		}
+		if (req.param('indicator') === 'sectors') {
+			return res.json(200, { value: 1 })
+		}
+		if (req.param('indicator') === 'contributors') {
+			return res.json(200, { value: 1 })
+		}
+		return res.json(200,{data:chart})
 	}
 
 };
