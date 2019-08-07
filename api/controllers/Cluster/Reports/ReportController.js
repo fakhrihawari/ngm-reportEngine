@@ -1276,6 +1276,52 @@ var ReportController = {
 		if (req.param('indicator') === 'contributors') {
 			return res.json(200, { value: 1 })
 		}
+		if(req.param('indicator')==='lists'){
+			var list=[{
+				"id": "5cfdc376ee6ec8d107a11755",
+        "timestamp" : "7/31/2018 12:12:04",
+        "email" : "pfitzgerald@immap.org",
+        "project" : "Dummy",
+        "country" : "Afghanistan",
+        "product_sector" : "Health",
+        "product_month" : "July",
+        "product_year" : "2018",
+				"product_type" : "Map",
+				"partner":"ORGA",
+				"category_name":'Humanitarian Partner',
+				"area_activity_name":"Information Management and Coordination Support",
+				"collab_name":"CC",
+        "product_description" : "4W Analysis for Health",
+        "product_upload" : [
+                "https://drive.google.com/open?id=1KB2pUffgVZU5L7M5AZjuYzJTYPWQriSy"
+        ],
+        "product_id" : [
+                "1KB2pUffgVZU5L7M5AZjuYzJTYPWQriSy"
+        ],
+        "form_url" : "https://docs.google.com/forms/d/e/1FAIpQLSdMYljeEtH5CdwcDi0xUaj4WE5KHPkuEnck86KGi-BayR65jA/viewform?edit2=2_ABaOnudnpWEK8fZ1QDivqCaxb623pbdeGZIiuq0xMpfp8XPsUiUuuaoNiMU55tA",
+        "timestamp_format" : "Tue, 31 Jul 2018 12:12:04",
+        "product_sector_id" : "health",
+        "product_type_id" : "map",
+        "product_date" : "2018-07-01T00:00:00.000Z",
+        "product_sector_short" : "HEA",
+        "theme" : {
+                "color" : "#2196f3"
+        },
+        "adminRpcode" : "AFRO",
+        "adminRname" : "AFRO",
+        "adminRzoom" : 3,
+        "adminRlng" : 23.669468,
+        "adminRlat" : -1.173667,
+        "admin0pcode" : "AF",
+        "admin0name" : "Afghanistan",
+        "admin0lng" : 39.041495,
+        "admin0lat" : 8.308214,
+        "admin0zoom" : 6,
+        "createdAt" : '2019-04-30',
+				"updatedAt": '2019-04-30'
+			}];
+			return res.json(200,list)
+		}
 		return res.json(200,{data:chart})
 	}
 
