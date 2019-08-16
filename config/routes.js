@@ -290,7 +290,8 @@ module.exports.routes = {
 	'POST /immap/report/getDummyReport': 'Cluster/Reports/ReportController.getDummyReport', 
 	'POST /immap/report/getLicenseDummyList': 'Cluster/Reports/ReportController.getLicenseDummyList',
 	'POST /immap/report/getTeamLicenseDummyList': 'Cluster/Reports/ReportController.getTeamLicenseDummyList',
-	'POST /immap/report/getProductDummyIndicator': 'Cluster/Reports/ReportController.getProductDummyIndicator'
+	'POST /immap/report/getProductDummyIndicator': 'Cluster/Reports/ReportController.getProductDummyIndicator',
+	'POST /immap/report/getDummyMenu': 'Cluster/Reports/ReportController.getDummyMenu'
 
 
   /***************************************************************************
