@@ -1483,11 +1483,18 @@ var ReportController = {
 		var type_chart = [{
 			color: "#f48fb1", label: 1407, name: "Map", y: 54.29992892679459
 		}, { color: "#90caf9", label: 1407, name: "Dashboard", y: 45.7000710732054 }];
+		var prod_chart = [{
+			color: "#f48fb1", label: 1407, name: "Map", y: 50.29992892679459
+		}, { color: "#90caf9", label: 1407, name: "Dashboard", y: 30.7000710732054 },
+			{ color: "#5cb85c", label: 1407, name: "Infographics", y: 19.0000000000000 }];
 		if (req.param('indicator') ==='sector_chart'){
 			chart= sector_chart;
 		}
 		if (req.param('indicator') === 'type_chart'){
 			chart = type_chart;
+		}
+		if (req.param('indicator') === 'prod_chart') {
+			chart = prod_chart;
 		}
 		if (req.param('indicator') === 'products'){
 			return res.json(200, { value: 1 })
