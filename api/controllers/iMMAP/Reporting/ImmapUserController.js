@@ -351,7 +351,8 @@ var ImmapUserController = {
   
       // try to look up user using the provided username/email address
       ImmapUser.findOne({
-        username: req.param( 'user' ).username
+				// username: req.param( 'user' ).username
+				email: req.param('user').email
         // or: [{
         //     username: req.param( 'user' ).username
         //   },{
