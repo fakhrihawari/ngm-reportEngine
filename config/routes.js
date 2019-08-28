@@ -287,11 +287,14 @@ module.exports.routes = {
 	'POST /drought/afghanistan/beneficiaries/data': 'Country/Afg/Drought/DroughtDashboardController.getDroughtData',
 
 	'POST /immap/report/getReportsList': 'Cluster/Reports/ReportController.getDummyReportList',
+	'POST /immap/report/setDummyReport': 'Cluster/Reports/ReportController.setDummyReport',
 	'POST /immap/report/getDummyReport': 'Cluster/Reports/ReportController.getDummyReport', 
 	'POST /immap/report/getLicenseDummyList': 'Cluster/Reports/ReportController.getLicenseDummyList',
 	'POST /immap/report/getTeamLicenseDummyList': 'Cluster/Reports/ReportController.getTeamLicenseDummyList',
 	'POST /immap/report/getProductDummyIndicator': 'Cluster/Reports/ReportController.getProductDummyIndicator',
-	'POST /immap/report/getDummyMenu': 'Cluster/Reports/ReportController.getDummyMenu'
+	'POST /immap/report/getDummyMenu': 'Cluster/Reports/ReportController.getDummyMenu',
+	'GET /immap/getTeamReporting': 'Cluster/Reports/ReportController.getTeamReporting',
+	'POST /immap/getTeamReporting': 'Cluster/Reports/ReportController.getTeamReporting',
 
 
   /***************************************************************************
