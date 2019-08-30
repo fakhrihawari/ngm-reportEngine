@@ -2090,6 +2090,110 @@ var ReportController = {
 		if (req.param('indicator') === 'prod_chart') {
 			chart = prod_chart;
 		}
+		if (req.param('indicator') === 'bar_chart_user'){
+			var bar_chart = [
+				{
+					name: 'Map',
+					color: '#7cb5ec',
+					data: [
+						10, //data for user A 
+						19, //data for user AB
+						11, //data for user AC
+						12, //data for user AD
+						15, //data for user AE
+						21, //data for user AF	 
+						5, //data for user AG 
+						25, //data for user AH 
+						40, //data for user AI 
+						31, //data for user AJ 
+						8 // data for user AK
+					]
+				},
+				{
+					name: 'Dashboard',
+					color: '#be2126',
+					data: [
+						5,//data for user A
+						10,//data for user AB
+						4,//data for user AC
+						6,//data for user AD
+						7,//data for user AE
+						10,//data for user AF
+						2,//data for user AG
+						12,//data for user AH
+						20,//data for user AI
+						15,//data for user AJ
+						4 //data for user AK
+					]
+				}]
+
+			chart = bar_chart;
+			// for barchart categories
+			var barchart_xAxis_categories_user = ['User A',
+				'User AB',
+				'User AC',
+				'User AD',
+				'User AE',
+				'User AF',
+				'User AG',
+				'User AH',
+				'User AI',
+				'User AJ',
+				'User AK']
+			return res.json({ data: chart, categories: barchart_xAxis_categories_user });
+		}
+		if (req.param('indicator') === 'bar_chart_partner') {
+			var bar_chart = [
+				{
+					name: 'Map',
+					color: '#7cb5ec',
+					data: [
+						10, //data for user A 
+						19, //data for user AB
+						11, //data for user AC
+						12, //data for user AD
+						15, //data for user AE
+						21, //data for user AF	 
+						5, //data for user AG 
+						25, //data for user AH 
+						40, //data for user AI 
+						31, //data for user AJ 
+						8 // data for user AK
+					]
+				},
+				{
+					name: 'Dashboard',
+					color: '#be2126',
+					data: [
+						2,//data for user A
+						5,//data for user AB
+						2,//data for user AC
+						3,//data for user AD
+						4,//data for user AE
+						5,//data for user AF
+						1,//data for user AG
+						6,//data for user AH
+						10,//data for user AI
+						7,//data for user AJ
+						2 //data for user AK
+					]
+				}];
+
+			chart = bar_chart;
+			// for barchart categories
+				var barchart_xAxis_categories_partner = ['Partner A',
+					'Partner AB',
+					'Partner AC',
+					'Partner AD',
+					'Partner AE',
+					'Partner AF',
+					'Partner AG',
+					'Partner AH',
+					'Partner AI',
+					'Partner AJ',
+					'Partner AK']
+			return res.json({ data: chart, categories: barchart_xAxis_categories_partner });
+		}
 		if (req.param('indicator') === 'products'){
 			return res.json(200, { value: 1 })
 		}
