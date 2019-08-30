@@ -2165,17 +2165,17 @@ var ReportController = {
 					name: 'Dashboard',
 					color: '#be2126',
 					data: [
-						2,//data for user A
-						5,//data for user AB
-						2,//data for user AC
-						3,//data for user AD
-						4,//data for user AE
-						5,//data for user AF
-						1,//data for user AG
-						6,//data for user AH
-						10,//data for user AI
-						7,//data for user AJ
-						2 //data for user AK
+						2,//data for partner A
+						5,//data for partner AB
+						2,//data for partner AC
+						3,//data for partner AD
+						4,//data for partner AE
+						5,//data for partner AF
+						1,//data for partner AG
+						6,//data for partner AH
+						10,//data for partner AI
+						7,//data for partner AJ
+						2 //data for partner AK
 					]
 				}];
 
