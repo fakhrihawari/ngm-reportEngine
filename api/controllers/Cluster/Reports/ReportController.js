@@ -1862,10 +1862,22 @@ var ReportController = {
 				upload_id:'fkhrhwrrfn123test021'
 			}];
 		var report;
-			if(req.param('status')=== 'complete'){
+		if(req.param('status')=== 'complete'){
 			report = complete;			
 		}else{
 			report = todo;
+		}
+		if(!req.param('list')){
+			if (req.param('status') === 'todo'){
+				length = 1;
+			}
+			if (req.param('status') === 'complete') {
+				length = 1;
+			}
+			if (req.param('status') === 'total') {
+				length = 2;
+			}
+			return res.json(200,{value:length})
 		}
 		return res.json(200, report);
 	},
@@ -2072,8 +2084,8 @@ var ReportController = {
 	getProductDummyIndicator:function(req,res){
 		var chart=[]
 		var sector_chart = [{
-			color: "#f48fb1", label: 1407, name: "WASH", y: 54.29992892679459
-		}, { color: "#90caf9", label: 1407, name: "Health", y: 45.7000710732054 }];
+			color: "#f48fb1", label: 1407, name: "DRR", y: 54.29992892679459
+		}, { color: "#90caf9", label: 1407, name: "Information Management and Coordination Support", y: 45.7000710732054 }];
 		var type_chart = [{
 			color: "#f48fb1", label: 1407, name: "Map", y: 54.29992892679459
 		}, { color: "#90caf9", label: 1407, name: "Dashboard", y: 45.7000710732054 }];
@@ -2081,11 +2093,17 @@ var ReportController = {
 			color: "#f48fb1", label: 1407, name: "Map", y: 50.29992892679459
 		}, { color: "#90caf9", label: 1407, name: "Dashboard", y: 30.7000710732054 },
 			{ color: "#5cb85c", label: 1407, name: "Infographics", y: 19.0000000000000 }];
+		var partner_category_chart =[{
+			color: "#f48fb1", label: 1407, name: "Humanitarian Partner", y: 54.29992892679459
+		}, { color: "#90caf9", label: 1407, name: "Humanitarian Partner", y: 45.7000710732054 }]
 		if (req.param('indicator') ==='sector_chart'){
 			chart= sector_chart;
 		}
 		if (req.param('indicator') === 'type_chart'){
 			chart = type_chart;
+		}
+		if (req.param('indicator') === 'partner_category_chart'){
+			chart = partner_category_chart;
 		}
 		if (req.param('indicator') === 'prod_chart') {
 			chart = prod_chart;
@@ -2507,8 +2525,329 @@ var ReportController = {
 				name: "fharifin",
 				phone: "01010110",
 				username: "dummzero"
-			},]
-			return res.json(200,list)
+			},];
+			var list2=[{
+			id:'t1',
+			// support_partner: [{
+			// 	id: '1s2w3erhshsh',
+			// 	area_activity_id: "information_management_coordination",
+			// 	area_activity_name: "Information Management and Coordination Support",
+			// 	area_id: "information_management_coordination",
+			// 	area_name: "Information Management and Coordination Support",
+			// 	category_id: "humanitarian_partner",
+			// 	category_name: "Humanitarian Partner",
+			// 	partner_category_id: "humanitarian_partner",
+			// 	partner_category_name: "Humanitarian Partner",
+			// 	collab_id: "02",
+			// 	collab_name: "CC",
+			// 	collabArray:[{ id: '01', name: 'YY' }, { id: '02', name: 'CC' }],
+			// 	narative_activity_id: "01",
+			// 	narative_activity_name: "Information Management Narative",
+			// 	narative: "Todo Upload ideally should be per row and could be multipart(to come with best solution-number_products: 10",
+			// 	number_products: 10,
+			// 	partner: " ORGA",
+			// 	partner_id: "02",
+			// 	product_id: "static_infographic",
+			// 	product_name: "Static Infographic",
+			// 	file: [{
+			// 		admin0pcode: "AF",
+			// 		adminRpcode: "EMRO",
+			// 		cluster_id: "health",
+			// 		createdAt: "2019-06-10T02:41:58.702Z",
+			// 		fileid: "1fIpwiNVX-HbRV2Q62Hb3Mo_KM_3T4uuV",
+			// 		fileid_local: "1fd73000-4568-4050-a89d-00ed87a1a554.PNG",
+			// 		filename: "leave-balance.2PNG.PNG",
+			// 		filename_extension: ".PNG",
+			// 		fileowner: "fakhrihawari",
+			// 		id: "5cfdc376ee6ec8d107a11755",
+			// 		mime_type: "image/png",
+			// 		organization_tag: "immap",
+			// 		project_end_date: "2018-12-31T00:00:00.000Z",
+			// 		project_id: "pln123lstrk456coba78",
+			// 		project_start_date: "2018-01-01T00:00:00.000Z",
+			// 		report_id: "fkhrhwrrfn123test021",
+			// 		reporting_period: "2018-12-01T00:00:00.000Z",
+			// 		updatedAt: "2019-06-10T02:41:58.702Z"
+			// 	}]
+			// }],
+			// planed_activity: [{
+			// 	id: 'qw@#$1234mn',
+			// 	area_activity_id: "information_management_coordination",
+			// 	area_activity_name: "Information Management and Coordination Support",
+			// 	area_id: "information_management_coordination",
+			// 	area_name: "Information Management and Coordination Support",
+			// 	category_id: "humanitarian_partner",
+			// 	category_name: "Humanitarian Partner",
+			// 	partner_category_id: "humanitarian_partner",
+			// 	partner_category_name: "Humanitarian Partner",
+			// 	narative_activity_id: "01",
+			// 	narative_activity_name: "Information Management Narative",
+			// 	number_products: 10,
+			// 	partner: " ORGA",
+			// 	partner_id: "02",
+			// 	product_id: "static_infographic",
+			// 	product_name: "Static Infographic",
+			// }],
+			products: [{
+				id: '1s2w3erhshsh',
+				area_id: "information_management_coordination",
+				area_name: "Information Management and Coordination Support",
+				partner_category_id: "humanitarian_partner",
+				partner_category_name: "Humanitarian Partner",
+				collab_id: "02",
+				collab_name: "CC",
+				collabArray: [{ id: '01', name: 'YY' }, { id: '02', name: 'CC' }],
+				collaborators: [{ id: '01', name: 'YY' }, { id: '02', name: 'CC' }],
+				product_detail_id: 'a3',
+				product_detail_name: 'A3',
+				narrative: "Todo Upload ideally should be per row and could be multipart(to come with best solution-number_products: 10",
+				number_products: 101,
+				partner: " ORGA",
+				partner_id: "02",
+				product_id: "static_infographic",
+				product_name: "Static Infographic",
+				files: [{
+					admin0pcode: "AF",
+					adminRpcode: "EMRO",
+					cluster_id: "health",
+					createdAt: "2019-06-10T02:41:58.702Z",
+					fileid: "1fIpwiNVX-HbRV2Q62Hb3Mo_KM_3T4uuV",
+					fileid_local: "1fd73000-4568-4050-a89d-00ed87a1a554.PNG",
+					filename: "leave-balance.2PNG.PNG",
+					filename_extension: ".PNG",
+					fileowner: "fakhrihawari",
+					id: "5cfdc376ee6ec8d107a11755",
+					mime_type: "image/png",
+					organization_tag: "immap",
+					project_end_date: "2018-12-31T00:00:00.000Z",
+					project_id: "pln123lstrk456coba78",
+					project_start_date: "2018-01-01T00:00:00.000Z",
+					report_id: "fkhrhwrrfn123test021",
+					reporting_period: "2018-12-01T00:00:00.000Z",
+					updatedAt: "2019-06-10T02:41:58.702Z"
+				}, {
+					admin0pcode: "AF",
+					adminRpcode: "EMRO",
+					cluster_id: "health",
+					createdAt: "2019-06-10T02:41:58.702Z",
+					fileid: "1fIpwiNVX-HbRV2Q62Hb3Mo_KM_3T4uuV",
+					fileid_local: "1fd73000-4568-4050-a89d-00ed87a1a554.PNG",
+					filename: "leave-balance.2PNG.PNG",
+					filename_extension: ".PNG",
+					fileowner: "fakhrihawari",
+					id: "5cfdc376ee6ec8d107a11755",
+					mime_type: "image/png",
+					organization_tag: "immap",
+					project_end_date: "2018-12-31T00:00:00.000Z",
+					project_id: "pln123lstrk456coba78",
+					project_start_date: "2018-01-01T00:00:00.000Z",
+					report_id: "fkhrhwrrfn123test021",
+					reporting_period: "2018-12-01T00:00:00.000Z",
+					updatedAt: "2019-06-10T02:41:58.702Z"
+				}, {
+					admin0pcode: "AF",
+					adminRpcode: "EMRO",
+					cluster_id: "health",
+					createdAt: "2019-06-10T02:41:58.702Z",
+					fileid: "1fIpwiNVX-HbRV2Q62Hb3Mo_KM_3T4uuV",
+					fileid_local: "1fd73000-4568-4050-a89d-00ed87a1a554.PNG",
+					filename: "leave-balance.2PNG.PNG",
+					filename_extension: ".PNG",
+					fileowner: "fakhrihawari",
+					id: "5cfdc376ee6ec8d107a11755",
+					mime_type: "image/png",
+					organization_tag: "immap",
+					project_end_date: "2018-12-31T00:00:00.000Z",
+					project_id: "pln123lstrk456coba78",
+					project_start_date: "2018-01-01T00:00:00.000Z",
+					report_id: "fkhrhwrrfn123test021",
+					reporting_period: "2018-12-01T00:00:00.000Z",
+					updatedAt: "2019-06-10T02:41:58.702Z"
+				}, {
+					admin0pcode: "AF",
+					adminRpcode: "EMRO",
+					cluster_id: "health",
+					createdAt: "2019-06-10T02:41:58.702Z",
+					fileid: "1fIpwiNVX-HbRV2Q62Hb3Mo_KM_3T4uuV",
+					fileid_local: "1fd73000-4568-4050-a89d-00ed87a1a554.PNG",
+					filename: "leave-balance.2PNG.PNG",
+					filename_extension: ".PNG",
+					fileowner: "fakhrihawari",
+					id: "5cfdc376ee6ec8d107a11755",
+					mime_type: "image/png",
+					organization_tag: "immap",
+					project_end_date: "2018-12-31T00:00:00.000Z",
+					project_id: "pln123lstrk456coba78",
+					project_start_date: "2018-01-01T00:00:00.000Z",
+					report_id: "fkhrhwrrfn123test021",
+					reporting_period: "2018-12-01T00:00:00.000Z",
+					updatedAt: "2019-06-10T02:41:58.702Z"
+				}, {
+					admin0pcode: "AF",
+					adminRpcode: "EMRO",
+					cluster_id: "health",
+					createdAt: "2019-06-10T02:41:58.702Z",
+					fileid: "1fIpwiNVX-HbRV2Q62Hb3Mo_KM_3T4uuV",
+					fileid_local: "1fd73000-4568-4050-a89d-00ed87a1a554.PNG",
+					filename: "leave-balance.2PNG.PNG",
+					filename_extension: ".PNG",
+					fileowner: "fakhrihawari",
+					id: "5cfdc376ee6ec8d107a11755",
+					mime_type: "image/png",
+					organization_tag: "immap",
+					project_end_date: "2018-12-31T00:00:00.000Z",
+					project_id: "pln123lstrk456coba78",
+					project_start_date: "2018-01-01T00:00:00.000Z",
+					report_id: "fkhrhwrrfn123test021",
+					reporting_period: "2018-12-01T00:00:00.000Z",
+					updatedAt: "2019-06-10T02:41:58.702Z"
+				}, {
+					admin0pcode: "AF",
+					adminRpcode: "EMRO",
+					cluster_id: "health",
+					createdAt: "2019-06-10T02:41:58.702Z",
+					fileid: "1fIpwiNVX-HbRV2Q62Hb3Mo_KM_3T4uuV",
+					fileid_local: "1fd73000-4568-4050-a89d-00ed87a1a554.PNG",
+					filename: "leave-balance.2PNG.PNG",
+					filename_extension: ".PNG",
+					fileowner: "fakhrihawari",
+					id: "5cfdc376ee6ec8d107a11755",
+					mime_type: "image/png",
+					organization_tag: "immap",
+					project_end_date: "2018-12-31T00:00:00.000Z",
+					project_id: "pln123lstrk456coba78",
+					project_start_date: "2018-01-01T00:00:00.000Z",
+					report_id: "fkhrhwrrfn123test021",
+					reporting_period: "2018-12-01T00:00:00.000Z",
+					updatedAt: "2019-06-10T02:41:58.702Z"
+				}, {
+					admin0pcode: "AF",
+					adminRpcode: "EMRO",
+					cluster_id: "health",
+					createdAt: "2019-06-10T02:41:58.702Z",
+					fileid: "1fIpwiNVX-HbRV2Q62Hb3Mo_KM_3T4uuV",
+					fileid_local: "1fd73000-4568-4050-a89d-00ed87a1a554.PNG",
+					filename: "leave-balance.2PNG.PNG",
+					filename_extension: ".PNG",
+					fileowner: "fakhrihawari",
+					id: "5cfdc376ee6ec8d107a11755",
+					mime_type: "image/png",
+					organization_tag: "immap",
+					project_end_date: "2018-12-31T00:00:00.000Z",
+					project_id: "pln123lstrk456coba78",
+					project_start_date: "2018-01-01T00:00:00.000Z",
+					report_id: "fkhrhwrrfn123test021",
+					reporting_period: "2018-12-01T00:00:00.000Z",
+					updatedAt: "2019-06-10T02:41:58.702Z"
+				}, {
+					admin0pcode: "AF",
+					adminRpcode: "EMRO",
+					cluster_id: "health",
+					createdAt: "2019-06-10T02:41:58.702Z",
+					fileid: "1fIpwiNVX-HbRV2Q62Hb3Mo_KM_3T4uuV",
+					fileid_local: "1fd73000-4568-4050-a89d-00ed87a1a554.PNG",
+					filename: "leave-balance.2PNG.PNG",
+					filename_extension: ".PNG",
+					fileowner: "fakhrihawari",
+					id: "5cfdc376ee6ec8d107a11755",
+					mime_type: "image/png",
+					organization_tag: "immap",
+					project_end_date: "2018-12-31T00:00:00.000Z",
+					project_id: "pln123lstrk456coba78",
+					project_start_date: "2018-01-01T00:00:00.000Z",
+					report_id: "fkhrhwrrfn123test021",
+					reporting_period: "2018-12-01T00:00:00.000Z",
+					updatedAt: "2019-06-10T02:41:58.702Z"
+				}, {
+					admin0pcode: "AF",
+					adminRpcode: "EMRO",
+					cluster_id: "health",
+					createdAt: "2019-06-10T02:41:58.702Z",
+					fileid: "1fIpwiNVX-HbRV2Q62Hb3Mo_KM_3T4uuV",
+					fileid_local: "1fd73000-4568-4050-a89d-00ed87a1a554.PNG",
+					filename: "leave-balance.2PNG.PNG",
+					filename_extension: ".PNG",
+					fileowner: "fakhrihawari",
+					id: "5cfdc376ee6ec8d107a11755",
+					mime_type: "image/png",
+					organization_tag: "immap",
+					project_end_date: "2018-12-31T00:00:00.000Z",
+					project_id: "pln123lstrk456coba78",
+					project_start_date: "2018-01-01T00:00:00.000Z",
+					report_id: "fkhrhwrrfn123test021",
+					reporting_period: "2018-12-01T00:00:00.000Z",
+					updatedAt: "2019-06-10T02:41:58.702Z"
+				}, {
+					admin0pcode: "AF",
+					adminRpcode: "EMRO",
+					cluster_id: "health",
+					createdAt: "2019-06-10T02:41:58.702Z",
+					fileid: "1fIpwiNVX-HbRV2Q62Hb3Mo_KM_3T4uuV",
+					fileid_local: "1fd73000-4568-4050-a89d-00ed87a1a554.PNG",
+					filename: "leave-balance.2PNG.PNG",
+					filename_extension: ".PNG",
+					fileowner: "fakhrihawari",
+					id: "5cfdc376ee6ec8d107a11755",
+					mime_type: "image/png",
+					organization_tag: "immap",
+					project_end_date: "2018-12-31T00:00:00.000Z",
+					project_id: "pln123lstrk456coba78",
+					project_start_date: "2018-01-01T00:00:00.000Z",
+					report_id: "fkhrhwrrfn123test021",
+					reporting_period: "2018-12-01T00:00:00.000Z",
+					updatedAt: "2019-06-10T02:41:58.702Z"
+				}, {
+					admin0pcode: "AF",
+					adminRpcode: "EMRO",
+					cluster_id: "health",
+					createdAt: "2019-06-10T02:41:58.702Z",
+					fileid: "1fIpwiNVX-HbRV2Q62Hb3Mo_KM_3T4uuV",
+					fileid_local: "1fd73000-4568-4050-a89d-00ed87a1a554.PNG",
+					filename: "leave-balance.2PNG.PNG",
+					filename_extension: ".PNG",
+					fileowner: "fakhrihawari",
+					id: "5cfdc376ee6ec8d107a11755",
+					mime_type: "image/png",
+					organization_tag: "immap",
+					project_end_date: "2018-12-31T00:00:00.000Z",
+					project_id: "pln123lstrk456coba78",
+					project_start_date: "2018-01-01T00:00:00.000Z",
+					report_id: "fkhrhwrrfn123test021",
+					reporting_period: "2018-12-01T00:00:00.000Z",
+					updatedAt: "2019-06-10T02:41:58.702Z"
+				}]
+			}],
+			planned_products: [{
+				id: 'qw@#$1234mn',
+				area_id: "information_management_coordination",
+				area_name: "Information Management and Coordination Support",
+				partner_category_id: "humanitarian_partner",
+				partner_category_name: "Humanitarian Partner",
+				narrative: "Todo Upload ideally should be per row and could be multipart(to come with best solution-number_products: 10",
+				number_products: 1,
+				partner: " ORGA",
+				partner_id: "02",
+				product_id: "static_infographic",
+				product_name: "Static Infographic",
+			}],
+			rating: 5,
+			notes: 'SWAG',
+			month_date: '2019-06-21',
+			report_date: '2019-06-21',
+			reporting_period: '2019-06-1',
+			report_year: '2019',
+			month: '6',
+			report_month: '6',
+			icon: 'alarm_on',
+			report_status: 'todo',
+			report_submit: false,
+			upload_id: 'fkhrhwrrfn123test021',
+			email: "dummyzero@immap.org",
+			name: "fharifin",
+			phone: "01010110",
+			username: "dummzero"
+		}];
+			return res.json(200,list2)
 		}
 		if(req.param('indicator')==='list_product'){
 			var list = [{
@@ -2745,289 +3084,312 @@ var ReportController = {
 	},
 	getDummyMenu:function(req,res){
 		var menu = [];
-		var menu_items = req.param('menu_items');
-		console.log(menu_items);
-		Products
-			.find()
-			.exec(function (err, products) {
+		// var menu_items = req.param('menu_items');
+		// console.log(menu_items);
+		var menu ={
+			sector: [],
+			country: [{ admin0pcode:'AF', admin0name:'Afghanistan'}],
+			partner_category: [{partner_category_id: "humanitarian_partner",partner_category_name: "Humanitarian Partner"}],
+			partner: [{partner: " ORGA",partner_id: "02",}],
+			area: [{ area_id: 'information_management_coordination_support', area_name: 'Information Management and Coordination Support', subarea_id: 'sub_a', subarea_name: 'Sub A' },
+			{ area_id: 'information_management_coordination_support', area_name: 'Information Management and Coordination Support', subarea_id: 'sub_b', subarea_name: 'Sub B' },
+			{ area_id: 'drr', area_name: 'DRR', subarea_id: 'sub_c', subarea_name: 'Sub C' },
+			{ area_id: 'drr', area_name: 'DRR', subarea_id: 'sub_d', subarea_name: 'Sub D' }],
+			type: [{ product_id: 'static_infoghraphic', product_name: 'Static infographic' },
+						{ product_id: 'dynamic_infoghraphic', product_name: 'Dynamic infographic' },
+						{ product_id: 'training', product_name: 'Training' },
+						{ product_id: 'map', product_name: 'Map' },
+						{ product_id: 'printed_product', product_name: 'Printed Product' },
+						{ product_id: 'Meeting', product_name: 'Meeting' }
+			],
+			user: [{ name: "fharifin",username: "dummzero"}],
+			
+			
+			
+			
+		}
+		return res.json(200,menu)
+		// Products
+		// 	.find()
+		// 	.exec(function (err, products) {
 
-				// return error
-				if (err) return res.negotiate(err);
+		// 		// return error
+		// 		if (err) return res.negotiate(err);
 	
 
-		// product_sector_id
-		if (menu_items.indexOf('product_sector_id') !== -1) {
+		// // product_sector_id
+		// if (menu_items.indexOf('product_sector_id') !== -1) {
 
-			// menu
-			menu.push({
-				'search': true,
-				'id': 'search-product_sector_id-products',
-				'icon': 'donut_large',
-				'title': 'Sector',
-				'class': 'teal lighten-1 white-text',
-				'rows': []
-			});
+		// 	// menu
+		// 	menu.push({
+		// 		'search': true,
+		// 		'id': 'search-product_sector_id-products',
+		// 		'icon': 'donut_large',
+		// 		'title': 'Sector',
+		// 		'class': 'teal lighten-1 white-text',
+		// 		'rows': []
+		// 	});
 
-			// get unique product_sector_id
-			var list = _.uniq(products, function (p) {
-				return p.product_sector_id;
-			});
+		// 	// get unique product_sector_id
+		// 	var list = _.uniq(products, function (p) {
+		// 		return p.product_sector_id;
+		// 	});
 
-			// sort
-			list.sort(function (a, b) {
-				return a.product_sector_id.localeCompare(b.product_sector_id);
-			});
+		// 	// sort
+		// 	list.sort(function (a, b) {
+		// 		return a.product_sector_id.localeCompare(b.product_sector_id);
+		// 	});
 
-			// add all
-			list.unshift({ product_sector: 'All', product_sector_id: 'all' });
+		// 	// add all
+		// 	list.unshift({ product_sector: 'All', product_sector_id: 'all' });
 
-			// for each
-			list.forEach(function (d, i) {
-				menu[menu.length - 1].rows.push({
-					'title': d.product_sector,
-					'param': 'product_sector_id',
-					'active': d.product_sector_id,
-					'class': 'grey-text text-darken-2 waves-effect waves-teal waves-teal-lighten-4',
-					'href': '/desk/#/immap/products/' + req.param('admin0pcode') + '/' +
-						req.param('project') + '/' +
-						d.product_sector_id + '/' +
-						req.param('product_type_id') + '/' +
-						req.param('email') + '/' +
-						req.param('start_date') + '/' +
-						req.param('end_date')
-				});
-			});
+		// 	// for each
+		// 	list.forEach(function (d, i) {
+		// 		menu[menu.length - 1].rows.push({
+		// 			'title': d.product_sector,
+		// 			'param': 'product_sector_id',
+		// 			'active': d.product_sector_id,
+		// 			'class': 'grey-text text-darken-2 waves-effect waves-teal waves-teal-lighten-4',
+		// 			'href': '/desk/#/immap/products/' + req.param('admin0pcode') + '/' +
+		// 				req.param('project') + '/' +
+		// 				d.product_sector_id + '/' +
+		// 				req.param('product_type_id') + '/' +
+		// 				req.param('email') + '/' +
+		// 				req.param('start_date') + '/' +
+		// 				req.param('end_date')
+		// 		});
+		// 	});
 
-		}
+		// }
 
-				// area
-				if (menu_items.indexOf('area') !== -1) {
+		// 		// area
+		// 		if (menu_items.indexOf('area') !== -1) {
 
-					// menu
-					menu.push({
-						'search': true,
-						'id': 'search-country-products',
-						'icon': 'map',
-						'title': 'Area',
-						'class': 'teal lighten-1 white-text',
-						'rows': []
-					});
+		// 			// menu
+		// 			menu.push({
+		// 				'search': true,
+		// 				'id': 'search-country-products',
+		// 				'icon': 'map',
+		// 				'title': 'Area',
+		// 				'class': 'teal lighten-1 white-text',
+		// 				'rows': []
+		// 			});
 
-					// get unique countries
-					var list = _.uniq(products, function (p) {
-						return p.admin0pcode;
-					});
+		// 			// get unique countries
+		// 			var list = _.uniq(products, function (p) {
+		// 				return p.admin0pcode;
+		// 			});
 
-					// sort
-					list.sort(function (a, b) {
-						return a.admin0pcode.localeCompare(b.admin0pcode);
-					});
+		// 			// sort
+		// 			list.sort(function (a, b) {
+		// 				return a.admin0pcode.localeCompare(b.admin0pcode);
+		// 			});
 
-					// add all
-					list.unshift({ admin0name: 'All', admin0pcode: 'all' });
+		// 			// add all
+		// 			list.unshift({ admin0name: 'All', admin0pcode: 'all' });
 
-					// for each
-					list.forEach(function (d, i) {
-						menu[menu.length - 1].rows.push({
-							'title': d.admin0name,
-							'param': 'admin0pcode',
-							'active': d.admin0pcode,
-							'class': 'grey-text text-darken-2 waves-effect waves-teal waves-teal-lighten-4',
-							'href': '/desk/#/immap/products/' + d.admin0pcode + '/' +
-								req.param('project') + '/' +
-								req.param('product_sector_id') + '/' +
-								req.param('product_type_id') + '/' +
-								req.param('email') + '/' +
-								req.param('start_date') + '/' +
-								req.param('end_date')
-						});
-					});
+		// 			// for each
+		// 			list.forEach(function (d, i) {
+		// 				menu[menu.length - 1].rows.push({
+		// 					'title': d.admin0name,
+		// 					'param': 'admin0pcode',
+		// 					'active': d.admin0pcode,
+		// 					'class': 'grey-text text-darken-2 waves-effect waves-teal waves-teal-lighten-4',
+		// 					'href': '/desk/#/immap/products/' + d.admin0pcode + '/' +
+		// 						req.param('project') + '/' +
+		// 						req.param('product_sector_id') + '/' +
+		// 						req.param('product_type_id') + '/' +
+		// 						req.param('email') + '/' +
+		// 						req.param('start_date') + '/' +
+		// 						req.param('end_date')
+		// 				});
+		// 			});
 
-				}
+		// 		}
 
-		// product_type_id
-		if (menu_items.indexOf('product_type_id') !== -1) {
+		// // product_type_id
+		// if (menu_items.indexOf('product_type_id') !== -1) {
 
-			// menu
-			menu.push({
-				'search': true,
-				'id': 'search-product_type_id-products',
-				'icon': 'crop_original',
-				'title': 'Type',
-				'class': 'teal lighten-1 white-text',
-				'rows': []
-			});
+		// 	// menu
+		// 	menu.push({
+		// 		'search': true,
+		// 		'id': 'search-product_type_id-products',
+		// 		'icon': 'crop_original',
+		// 		'title': 'Type',
+		// 		'class': 'teal lighten-1 white-text',
+		// 		'rows': []
+		// 	});
 
-			// get unique product_type_id
-			var list = _.uniq(products, function (p) {
-				return p.product_type_id;
-			});
+		// 	// get unique product_type_id
+		// 	var list = _.uniq(products, function (p) {
+		// 		return p.product_type_id;
+		// 	});
 
-			// sort
-			list.sort(function (a, b) {
-				return a.product_type_id.localeCompare(b.product_type_id);
-			});
+		// 	// sort
+		// 	list.sort(function (a, b) {
+		// 		return a.product_type_id.localeCompare(b.product_type_id);
+		// 	});
 
-			// add all
-			list.unshift({ product_type: 'All', product_type_id: 'all' });
+		// 	// add all
+		// 	list.unshift({ product_type: 'All', product_type_id: 'all' });
 
-			// for each
-			list.forEach(function (d, i) {
-				menu[menu.length - 1].rows.push({
-					'title': d.product_type,
-					'param': 'product_type_id',
-					'active': d.product_type_id,
-					'class': 'grey-text text-darken-2 waves-effect waves-teal waves-teal-lighten-4',
-					'href': '/desk/#/immap/products/' + req.param('admin0pcode') + '/' +
-						req.param('project') + '/' +
-						req.param('product_sector_id') + '/' +
-						d.product_type_id + '/' +
-						req.param('email') + '/' +
-						req.param('start_date') + '/' +
-						req.param('end_date')
-				});
-			});
+		// 	// for each
+		// 	list.forEach(function (d, i) {
+		// 		menu[menu.length - 1].rows.push({
+		// 			'title': d.product_type,
+		// 			'param': 'product_type_id',
+		// 			'active': d.product_type_id,
+		// 			'class': 'grey-text text-darken-2 waves-effect waves-teal waves-teal-lighten-4',
+		// 			'href': '/desk/#/immap/products/' + req.param('admin0pcode') + '/' +
+		// 				req.param('project') + '/' +
+		// 				req.param('product_sector_id') + '/' +
+		// 				d.product_type_id + '/' +
+		// 				req.param('email') + '/' +
+		// 				req.param('start_date') + '/' +
+		// 				req.param('end_date')
+		// 		});
+		// 	});
 
-		}
+		// }
 
-		// partner
-		if (menu_items.indexOf('partner') !== -1) {
+		// // partner
+		// if (menu_items.indexOf('partner') !== -1) {
 
-			// menu
-			menu.push({
-				'search': true,
-				'id': 'search-country-products',
-				'icon': 'compare_arrows',
-				'title': 'Partner',
-				'class': 'teal lighten-1 white-text',
-				'rows': []
-			});
+		// 	// menu
+		// 	menu.push({
+		// 		'search': true,
+		// 		'id': 'search-country-products',
+		// 		'icon': 'compare_arrows',
+		// 		'title': 'Partner',
+		// 		'class': 'teal lighten-1 white-text',
+		// 		'rows': []
+		// 	});
 
-			// get unique countries
-			var list = _.uniq(products, function (p) {
-				return p.admin0pcode;
-			});
+		// 	// get unique countries
+		// 	var list = _.uniq(products, function (p) {
+		// 		return p.admin0pcode;
+		// 	});
 
-			// sort
-			list.sort(function (a, b) {
-				return a.admin0pcode.localeCompare(b.admin0pcode);
-			});
+		// 	// sort
+		// 	list.sort(function (a, b) {
+		// 		return a.admin0pcode.localeCompare(b.admin0pcode);
+		// 	});
 
-			// add all
-			list.unshift({ admin0name: 'All', admin0pcode: 'all' });
+		// 	// add all
+		// 	list.unshift({ admin0name: 'All', admin0pcode: 'all' });
 
-			// for each
-			list.forEach(function (d, i) {
-				menu[menu.length - 1].rows.push({
-					'title': d.admin0name,
-					'param': 'admin0pcode',
-					'active': d.admin0pcode,
-					'class': 'grey-text text-darken-2 waves-effect waves-teal waves-teal-lighten-4',
-					'href': '/desk/#/immap/products/' + d.admin0pcode + '/' +
-						req.param('project') + '/' +
-						req.param('product_sector_id') + '/' +
-						req.param('product_type_id') + '/' +
-						req.param('email') + '/' +
-						req.param('start_date') + '/' +
-						req.param('end_date')
-				});
-			});
+		// 	// for each
+		// 	list.forEach(function (d, i) {
+		// 		menu[menu.length - 1].rows.push({
+		// 			'title': d.admin0name,
+		// 			'param': 'admin0pcode',
+		// 			'active': d.admin0pcode,
+		// 			'class': 'grey-text text-darken-2 waves-effect waves-teal waves-teal-lighten-4',
+		// 			'href': '/desk/#/immap/products/' + d.admin0pcode + '/' +
+		// 				req.param('project') + '/' +
+		// 				req.param('product_sector_id') + '/' +
+		// 				req.param('product_type_id') + '/' +
+		// 				req.param('email') + '/' +
+		// 				req.param('start_date') + '/' +
+		// 				req.param('end_date')
+		// 		});
+		// 	});
 
-		}
+		// }
 
-		// user
-		if (menu_items.indexOf('user') !== -1) {
+		// // user
+		// if (menu_items.indexOf('user') !== -1) {
 
-			// menu
-			menu.push({
-				'search': true,
-				'id': 'search-country-products',
-				'icon': 'person_pin',
-				'title': 'User',
-				'class': 'teal lighten-1 white-text',
-				'rows': []
-			});
+		// 	// menu
+		// 	menu.push({
+		// 		'search': true,
+		// 		'id': 'search-country-products',
+		// 		'icon': 'person_pin',
+		// 		'title': 'User',
+		// 		'class': 'teal lighten-1 white-text',
+		// 		'rows': []
+		// 	});
 
-			// get unique countries
-			var list = _.uniq(products, function (p) {
-				return p.admin0pcode;
-			});
+		// 	// get unique countries
+		// 	var list = _.uniq(products, function (p) {
+		// 		return p.admin0pcode;
+		// 	});
 
-			// sort
-			list.sort(function (a, b) {
-				return a.admin0pcode.localeCompare(b.admin0pcode);
-			});
+		// 	// sort
+		// 	list.sort(function (a, b) {
+		// 		return a.admin0pcode.localeCompare(b.admin0pcode);
+		// 	});
 
-			// add all
-			list.unshift({ admin0name: 'All', admin0pcode: 'all' });
+		// 	// add all
+		// 	list.unshift({ admin0name: 'All', admin0pcode: 'all' });
 
-			// for each
-			list.forEach(function (d, i) {
-				menu[menu.length - 1].rows.push({
-					'title': d.admin0name,
-					'param': 'admin0pcode',
-					'active': d.admin0pcode,
-					'class': 'grey-text text-darken-2 waves-effect waves-teal waves-teal-lighten-4',
-					'href': '/desk/#/immap/products/' + d.admin0pcode + '/' +
-						req.param('project') + '/' +
-						req.param('product_sector_id') + '/' +
-						req.param('product_type_id') + '/' +
-						req.param('email') + '/' +
-						req.param('start_date') + '/' +
-						req.param('end_date')
-				});
-			});
+		// 	// for each
+		// 	list.forEach(function (d, i) {
+		// 		menu[menu.length - 1].rows.push({
+		// 			'title': d.admin0name,
+		// 			'param': 'admin0pcode',
+		// 			'active': d.admin0pcode,
+		// 			'class': 'grey-text text-darken-2 waves-effect waves-teal waves-teal-lighten-4',
+		// 			'href': '/desk/#/immap/products/' + d.admin0pcode + '/' +
+		// 				req.param('project') + '/' +
+		// 				req.param('product_sector_id') + '/' +
+		// 				req.param('product_type_id') + '/' +
+		// 				req.param('email') + '/' +
+		// 				req.param('start_date') + '/' +
+		// 				req.param('end_date')
+		// 		});
+		// 	});
 
-		}
+		// }
 
-		// email
-		if (menu_items.indexOf('email') !== -1) {
+		// // email
+		// if (menu_items.indexOf('email') !== -1) {
 
-			// menu
-			menu.push({
-				'search': true,
-				'id': 'search-email-products',
-				'icon': 'email',
-				'title': 'Email',
-				'class': 'teal lighten-1 white-text',
-				'rows': []
-			});
+		// 	// menu
+		// 	menu.push({
+		// 		'search': true,
+		// 		'id': 'search-email-products',
+		// 		'icon': 'email',
+		// 		'title': 'Email',
+		// 		'class': 'teal lighten-1 white-text',
+		// 		'rows': []
+		// 	});
 
-			// get unique product_type_id
-			var list = _.uniq(products, function (p) {
-				return p.email;
-			});
+		// 	// get unique product_type_id
+		// 	var list = _.uniq(products, function (p) {
+		// 		return p.email;
+		// 	});
 
-			// sort
-			list.sort(function (a, b) {
-				return a.email.localeCompare(b.email);
-			});
+		// 	// sort
+		// 	list.sort(function (a, b) {
+		// 		return a.email.localeCompare(b.email);
+		// 	});
 
-			// add all
-			list.unshift({ email: 'all' });
+		// 	// add all
+		// 	list.unshift({ email: 'all' });
 
-			// for each
-			list.forEach(function (d, i) {
-				menu[menu.length - 1].rows.push({
-					'title': d.email === 'all' ? 'All' : d.email,
-					'param': 'email',
-					'active': d.email,
-					'class': 'grey-text text-darken-2 waves-effect waves-teal waves-teal-lighten-4',
-					'href': '/desk/#/immap/products/' + req.param('admin0pcode') + '/' +
-						req.param('project') + '/' +
-						req.param('product_sector_id') + '/' +
-						req.param('product_type_id') + '/' +
-						d.email + '/' +
-						req.param('start_date') + '/' +
-						req.param('end_date')
-				});
-			});
+		// 	// for each
+		// 	list.forEach(function (d, i) {
+		// 		menu[menu.length - 1].rows.push({
+		// 			'title': d.email === 'all' ? 'All' : d.email,
+		// 			'param': 'email',
+		// 			'active': d.email,
+		// 			'class': 'grey-text text-darken-2 waves-effect waves-teal waves-teal-lighten-4',
+		// 			'href': '/desk/#/immap/products/' + req.param('admin0pcode') + '/' +
+		// 				req.param('project') + '/' +
+		// 				req.param('product_sector_id') + '/' +
+		// 				req.param('product_type_id') + '/' +
+		// 				d.email + '/' +
+		// 				req.param('start_date') + '/' +
+		// 				req.param('end_date')
+		// 		});
+		// 	});
 
-		}
-		console.log();
+		// }
+		// console.log();
 
-		// return menu
-		return res.json(200, menu);})
+		// // return menu
+		// return res.json(200, menu);})
 
 	},
 	setDummyReport:function(req,res) {
