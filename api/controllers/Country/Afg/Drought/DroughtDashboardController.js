@@ -62,10 +62,26 @@ var DroughtDashboard = {
 			return res.json( 401, { err: 'year, province, district, month, start_date, end_date required!' });
 		}
 		// return params
-		return {
+		// return {
+		// 		indicator: req.param('indicator'),
+		// 		list: req.param('list') ? req.param('list') : false,
+		// 		year: parseInt( req.param('year') ),
+		// 		country: 'all',
+		// 		cluster: req.param('cluster'),
+		// 		province: req.param('province'),
+		// 		district: req.param('district'),
+		// 		urgency: req.param('urgency'),
+		// 		status_plan: req.param('status_plan'),
+		// 		organization_tag: req.param('organization_tag'),
+		// 		month: req.param('month'),
+    //     start_date: req.param('start_date'),
+    //     end_date: req.param('end_date'),
+      
+		//   }
+			var params= {
 				indicator: req.param('indicator'),
 				list: req.param('list') ? req.param('list') : false,
-				year: parseInt( req.param('year') ),
+				year: parseInt(req.param('year')),
 				country: 'all',
 				cluster: req.param('cluster'),
 				province: req.param('province'),
@@ -74,10 +90,18 @@ var DroughtDashboard = {
 				status_plan: req.param('status_plan'),
 				organization_tag: req.param('organization_tag'),
 				month: req.param('month'),
-        start_date: req.param('start_date'),
-        end_date: req.param('end_date'),
-      
-      }
+				start_date: req.param('start_date'),
+				end_date: req.param('end_date'),
+			}
+			
+			if(params.list && typeof params.list === 'string' ){
+				if(params.list === 'true'){
+					params.list = true;
+				}else{
+					params.list = false;
+				}
+			}
+			return params
 			
     },
   

@@ -16,11 +16,16 @@ module.exports = {
     // request input
     if ( !req.param( 'filter' ) ) {
       return res.json( 401, { err: 'filter required!' });
-    }
+		}
+		filter = req.param('filter');
+		if (filter === 'get') {
+			filter = req.allParams();
+			delete filter.filter;
+		}
 
     // get by organization_id & status
     StockReport
-      .find( req.param( 'filter' ) )
+      .find( filter )
       .sort( 'report_month ASC' )
       .populate('stocklocations')
       .exec ( function( err, reports ){

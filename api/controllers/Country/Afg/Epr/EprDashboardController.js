@@ -48,56 +48,114 @@ var EprDashboard = {
     // check req
     if (  !req.param('indicator') || !req.param('year') || !req.param('region') || !req.param('province')  || !req.param('week') || !req.param('start_date') || !req.param('end_date') ) {
       return res.json( 401, { err: 'year, region, province, week, start_date, end_date required!' });
-    }
+		}
     // return params
-    return {
-      indicator: req.param('indicator'),
-      list: req.param('list') ? req.param('list') : false,
-      year: parseInt( req.param('year') ),
-      region: req.param('region'),
-      province: req.param('province'),
-      week: req.param('week'),
-      start_date: req.param('start_date'),
-      end_date: req.param('end_date'),
-      current_week: ( parseInt( req.param('year') ) === moment().year() ) ? moment().week() : 53,
-      regions: {
-        'all': {
-          name: 'All'
-        },
-        'central': {
-          name: 'Central',
-          prov: [ 8,3,4,5,2,1 ]
-        },
-        'central_highlands': {
-          name: 'Central Highlands',
-          prov: [ 10,22 ]
-        },
-        'east': {
-          name: 'East',
-          prov: [ 13,7,14,6 ]
-        },
-        'north': {
-          name: 'North',
-          prov: [ 27,28,18,19,20 ]
-        },
-        'north_east': {
-          name: 'North East',
-          prov: [ 15,9,17,16 ]
-        },
-        'south': {
-          name: 'South',
-          prov: [ 32,23,34,24,33 ]
-        },
-        'south_east': {
-          name: 'South East',
-          prov: [  26,25,12,11 ]
-        },
-        'west': {
-          name: 'West',
-          prov: [ 31,21,29,30 ]
-        }
-      }
-    }
+    // return {
+    //   indicator: req.param('indicator'),
+    //   list: req.param('list') ? req.param('list') : false,
+    //   year: parseInt( req.param('year') ),
+    //   region: req.param('region'),
+    //   province: req.param('province'),
+    //   week: req.param('week'),
+    //   start_date: req.param('start_date'),
+    //   end_date: req.param('end_date'),
+    //   current_week: ( parseInt( req.param('year') ) === moment().year() ) ? moment().week() : 53,
+    //   regions: {
+    //     'all': {
+    //       name: 'All'
+    //     },
+    //     'central': {
+    //       name: 'Central',
+    //       prov: [ 8,3,4,5,2,1 ]
+    //     },
+    //     'central_highlands': {
+    //       name: 'Central Highlands',
+    //       prov: [ 10,22 ]
+    //     },
+    //     'east': {
+    //       name: 'East',
+    //       prov: [ 13,7,14,6 ]
+    //     },
+    //     'north': {
+    //       name: 'North',
+    //       prov: [ 27,28,18,19,20 ]
+    //     },
+    //     'north_east': {
+    //       name: 'North East',
+    //       prov: [ 15,9,17,16 ]
+    //     },
+    //     'south': {
+    //       name: 'South',
+    //       prov: [ 32,23,34,24,33 ]
+    //     },
+    //     'south_east': {
+    //       name: 'South East',
+    //       prov: [  26,25,12,11 ]
+    //     },
+    //     'west': {
+    //       name: 'West',
+    //       prov: [ 31,21,29,30 ]
+    //     }
+    //   }
+		// }
+		var params= {
+			indicator: req.param('indicator'),
+			list: req.param('list') ? req.param('list') : false,
+			year: parseInt(req.param('year')),
+			region: req.param('region'),
+			province: req.param('province'),
+			week: req.param('week'),
+			start_date: req.param('start_date'),
+			end_date: req.param('end_date'),
+			current_week: (parseInt(req.param('year')) === moment().year()) ? moment().week() : 53,
+			regions: {
+				'all': {
+					name: 'All'
+				},
+				'central': {
+					name: 'Central',
+					prov: [8, 3, 4, 5, 2, 1]
+				},
+				'central_highlands': {
+					name: 'Central Highlands',
+					prov: [10, 22]
+				},
+				'east': {
+					name: 'East',
+					prov: [13, 7, 14, 6]
+				},
+				'north': {
+					name: 'North',
+					prov: [27, 28, 18, 19, 20]
+				},
+				'north_east': {
+					name: 'North East',
+					prov: [15, 9, 17, 16]
+				},
+				'south': {
+					name: 'South',
+					prov: [32, 23, 34, 24, 33]
+				},
+				'south_east': {
+					name: 'South East',
+					prov: [26, 25, 12, 11]
+				},
+				'west': {
+					name: 'West',
+					prov: [31, 21, 29, 30]
+				}
+			}
+		}
+		if (typeof params.list === 'string') {
+			if (params.list === 'true') {				
+				params.list = true;
+				
+			} else {
+				params.list = false;
+				
+			}
+		}
+		return params;
 
   },
 

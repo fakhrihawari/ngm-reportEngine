@@ -140,7 +140,8 @@ module.exports.routes = {
   'GET /cluster/list/stockitems': 'Cluster/Lists/ListController.getStockItems',
 
   // ADMIN DASHBOARD
-  'POST /cluster/admin/indicator': 'Cluster/Dashboards/AdminDashboardController.getClusterAdminIndicator',
+	'POST /cluster/admin/indicator': 'Cluster/Dashboards/AdminDashboardController.getClusterAdminIndicator',
+	'GET /cluster/admin/indicator': 'Cluster/Dashboards/AdminDashboardController.getClusterAdminIndicator',
 
   // PROJECTS
   
@@ -149,7 +150,8 @@ module.exports.routes = {
   'GET /cluster/project/getProjectSectors': 'Cluster/ProjectController.getProjectSectors',
 
   // details
-  'POST /cluster/project/getProjectsList': 'Cluster/ProjectController.getProjectsList',
+	'POST /cluster/project/getProjectsList': 'Cluster/ProjectController.getProjectsList',
+	'GET /cluster/project/getProjectsList': 'Cluster/ProjectController.getProjectsList',
   'POST /cluster/project/getProject': 'Cluster/ProjectController.getProjectById',
   'POST /cluster/project/getProjects': 'Cluster/ProjectController.getProjects',
   'POST /cluster/project/setProject': 'Cluster/ProjectController.setProjectById',
@@ -163,7 +165,8 @@ module.exports.routes = {
 
 
   // STOCK REPORTS
-  'POST /cluster/stock/getReportsList': 'Cluster/Stocks/StockReportController.getReportsList',
+	'POST /cluster/stock/getReportsList': 'Cluster/Stocks/StockReportController.getReportsList',
+	'GET /cluster/stock/getReportsList': 'Cluster/Stocks/StockReportController.getReportsList',
   'POST /cluster/stock/getReport': 'Cluster/Stocks/StockReportController.getReportById',
   'POST /cluster/stock/setReport': 'Cluster/Stocks/StockReportController.setReportById',
   'POST /cluster/stock/removeStockLocation': 'Cluster/Stocks/StockReportController.removeReportLocation',
@@ -225,12 +228,17 @@ module.exports.routes = {
 
 
   // -------- DEWS --------
-  'POST /dews/indicator': 'Country/Afg/Dews/DewsController.getIndicator',
-  'POST /dews/chart': 'Country/Afg/Dews/DewsController.getChart',
-  'POST /dews/calendar': 'Country/Afg/Dews/DewsController.getCalendar',
-  'POST /dews/summary': 'Country/Afg/Dews/DewsController.getSummary',
+	'POST /dews/indicator': 'Country/Afg/Dews/DewsController.getIndicator',
+	'GET /dews/indicator': 'Country/Afg/Dews/DewsController.getIndicator',
+	'POST /dews/chart': 'Country/Afg/Dews/DewsController.getChart',
+	'GET /dews/chart': 'Country/Afg/Dews/DewsController.getChart',
+	'POST /dews/calendar': 'Country/Afg/Dews/DewsController.getCalendar',
+	'GET /dews/calendar': 'Country/Afg/Dews/DewsController.getCalendar',
+	'POST /dews/summary': 'Country/Afg/Dews/DewsController.getSummary',
+	'GET /dews/summary': 'Country/Afg/Dews/DewsController.getSummary',
   'POST /dews/data': 'Country/Afg/Dews/DewsController.getData',
-  'POST /dews/markers': 'Country/Afg/Dews/DewsController.getMarkers',
+	'POST /dews/markers': 'Country/Afg/Dews/DewsController.getMarkers',
+	'GET /dews/markers': 'Country/Afg/Dews/DewsController.getMarkers',
   'POST /dews/map': 'Country/Afg/Dews/DewsController.getMap',
 
 

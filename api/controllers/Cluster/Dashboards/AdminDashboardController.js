@@ -50,7 +50,15 @@ var AdminDashboardController = {
           admin0pcode_filter: req.param( 'admin0pcode' ) === 'all' ? {} : { admin0pcode: req.param( 'admin0pcode' ).toUpperCase() },
           start_date: req.param( 'start_date' ),
           end_date: req.param( 'end_date' )
-      }
+			}
+		// for Method GEt
+		if (typeof params.list !== "boolean") {
+				if(params.list === 'true'){
+					params.list = true;
+				}else{
+					params.list = false;
+				}
+		}
   
     params.organization_and_cluster_filter_Native = { $and: [params.cluster_filter, params.organization_filter_Native] };
   

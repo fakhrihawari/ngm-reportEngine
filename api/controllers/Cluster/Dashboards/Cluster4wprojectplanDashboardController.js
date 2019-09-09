@@ -145,6 +145,13 @@ var Cluster4wprojectplanDashboardController = {
 
 		// parmas, filters
 		var params = Cluster4wprojectplanDashboardController.getParams( req, res );
+		if (params.list && typeof params.list === 'string'){
+			if (params.list === 'true'){
+				params.list = true;
+			}else{
+				params.list = false;
+			}
+		}
 		var filters = Cluster4wprojectplanDashboardController.getFilters( params );
 		// match clause for native mongo query
 		var filterObject = _.extend({},	filters.default_Native,

@@ -144,11 +144,16 @@ var ProjectController = {
     // request input
     if ( !req.param('filter') ) {
       return res.json(401, { err: 'filter required!' });
-    }
-
+		}
+		filter = req.param('filter');
+		if(filter === 'get'){
+			filter = req.allParams();
+			delete filter.filter;
+		}
+	
     // get project by organization_id & status
     Project
-      .find( req.param( 'filter' ) )
+      .find( filter )
       .sort('updatedAt DESC')
       .exec(function(err, projects){
 
