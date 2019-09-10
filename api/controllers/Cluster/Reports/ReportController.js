@@ -266,10 +266,15 @@ var ReportController = {
 		if ( !req.param( 'filter' ) ) {
 			return res.json( 401, { err: 'filter required!' });
 		}
-
+		filter = req.param('filter');
+		if (filter === 'get') {
+			filter = req.allParams();
+			delete filter.filter;
+		}
+		
 		// promise
 		Promise.all([
-			Report.find( req.param( 'filter' ) ).sort( 'report_month ASC' ),
+			Report.find( filter ).sort( 'report_month ASC' ),
 			Beneficiaries.find( req.param( 'filter' ) )
 		])
 		.catch( function( err ) {

@@ -152,7 +152,8 @@ module.exports.routes = {
   // details
 	'POST /cluster/project/getProjectsList': 'Cluster/ProjectController.getProjectsList',
 	'GET /cluster/project/getProjectsList': 'Cluster/ProjectController.getProjectsList',
-  'POST /cluster/project/getProject': 'Cluster/ProjectController.getProjectById',
+	'POST /cluster/project/getProject': 'Cluster/ProjectController.getProjectById',
+	'GET /cluster/project/getProject': 'Cluster/ProjectController.getProjectById',
   'POST /cluster/project/getProjects': 'Cluster/ProjectController.getProjects',
   'POST /cluster/project/setProject': 'Cluster/ProjectController.setProjectById',
   'POST /cluster/project/removeBudgetItem': 'Cluster/ProjectController.removeBudgetItemById',
@@ -167,15 +168,18 @@ module.exports.routes = {
   // STOCK REPORTS
 	'POST /cluster/stock/getReportsList': 'Cluster/Stocks/StockReportController.getReportsList',
 	'GET /cluster/stock/getReportsList': 'Cluster/Stocks/StockReportController.getReportsList',
-  'POST /cluster/stock/getReport': 'Cluster/Stocks/StockReportController.getReportById',
+	'POST /cluster/stock/getReport': 'Cluster/Stocks/StockReportController.getReportById',
+	'GET /cluster/stock/getReport': 'Cluster/Stocks/StockReportController.getReportById',
   'POST /cluster/stock/setReport': 'Cluster/Stocks/StockReportController.setReportById',
   'POST /cluster/stock/removeStockLocation': 'Cluster/Stocks/StockReportController.removeReportLocation',
 
   // ACTIVITY REPORTS
   'POST /cluster/report/getReportCsv': 'Cluster/Reports/ReportController.getReportCsv',
-  'POST /cluster/report/getReportsList': 'Cluster/Reports/ReportController.getReportsList',
+	'POST /cluster/report/getReportsList': 'Cluster/Reports/ReportController.getReportsList',
+	'GET /cluster/report/getReportsList': 'Cluster/Reports/ReportController.getReportsList',
   'POST /cluster/report/getReportDetailsById': 'Cluster/Reports/ReportController.getReportDetailsById',
-  'POST /cluster/report/getReport': 'Cluster/Reports/ReportController.getReport',
+	'POST /cluster/report/getReport': 'Cluster/Reports/ReportController.getReport',
+	'GET /cluster/report/getReport': 'Cluster/Reports/ReportController.getReport',
   'POST /cluster/report/setReport': 'Cluster/Reports/ReportController.setReportById',
 	'POST /cluster/report/updateReportStatus': 'Cluster/Reports/ReportController.updateReportStatus',
 	'POST /cluster/report/updateReportValidation': 'Cluster/Reports/ReportController.updateReportValidation',
