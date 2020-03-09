@@ -94,7 +94,7 @@ module.exports = {
 		elderly_women:{
 			type: 'integer',
 			defaultsTo: 0
-    },
+	},
 
 		// total_beneficiaries 
 		total_beneficiaries: {

@@ -324,7 +324,7 @@ module.exports = {
 		elderly_women:{
 			type: 'integer',
 			defaultsTo: 0
-    },
+	},
 		site_lng: {
 			type: 'float',
 			required: true

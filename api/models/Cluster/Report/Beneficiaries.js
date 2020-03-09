@@ -423,6 +423,10 @@ module.exports = {
 			type: 'integer',
 			defaultsTo: 0
 		},
+		boys_disabled: {
+			type: 'integer',
+			defaultsTo: 0
+		},
 		girls_0_5:{
 			type: 'integer',
 			defaultsTo: 0
@@ -439,7 +443,15 @@ module.exports = {
 			type: 'integer',
 			defaultsTo: 0
 		},
+		girls_disabled: {
+			type: 'integer',
+			defaultsTo: 0
+		},
 		men:{
+			type: 'integer',
+			defaultsTo: 0
+		},
+		men_disabled: {
 			type: 'integer',
 			defaultsTo: 0
 		},
@@ -447,11 +459,23 @@ module.exports = {
 			type: 'integer',
 			defaultsTo: 0
 		},
+		women_disabled: {
+			type: 'integer',
+			defaultsTo: 0
+		},
 		elderly_men:{
 			type: 'integer',
 			defaultsTo: 0
 		},
+		elderly_men_disabled: {
+			type: 'integer',
+			defaultsTo: 0
+		},
 		elderly_women:{
+			type: 'integer',
+			defaultsTo: 0
+		},
+		elderly_women_disabled: {
 			type: 'integer',
 			defaultsTo: 0
 		},

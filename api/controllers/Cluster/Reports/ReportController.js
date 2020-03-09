@@ -82,11 +82,17 @@ var ReportController = {
 						'households',
 						'families',
 						'boys',
+						'boys_disabled',
 						'girls',
+						'girls_disabled',
 						'men',
+						'men_disabled',
 						'women',
+						'women_disabled',
 						'elderly_men',
+						'elderly_men_disabled',
 						'elderly_women',
+						'elderly_women_disabled',
 						'total',
 						'createdAt',
 						'updatedAt'
@@ -132,11 +138,17 @@ var ReportController = {
 						'Households',
 						'Families',
 						'Boys',
+						'Disabled Boys',
 						'Girls',
+						'Disabled Girls',
 						'Men',
+						'Disabled Men',
 						'Women',
+						'Disabled Women',
 						'Elderly Men',
+						'Disabled Elderly Men',
 						'Elderly Women',
+						'Disabled Elderly Women',
 						'Total',
 						'Created',
 						'Last Update'
@@ -159,7 +171,13 @@ var ReportController = {
 																response[i].men +
 																response[i].women +
 																response[i].elderly_men +
-																response[i].elderly_women;
+																response[i].elderly_women +
+																(response[i].boys_disabled ? response[i].boys_disabled:0) +
+																(response[i].girls_disabled ? response[i].girls_disabled:0) +
+																(response[i].men_disabled ? response[i].men_disabled:0) +
+																(response[i].women_disabled ? response[i].women_disabled:0) +
+																(response[i].elderly_men_disabled ? response[i].elderly_men_disabled:0) +
+																(response[i].elderly_women_disabled? response[i].elderly_women_disabled:0);
 					});
 
 					// return csv
