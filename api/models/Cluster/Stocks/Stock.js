@@ -187,7 +187,13 @@ module.exports = {
 			type: 'float',
 			required: true
 		},
-
+	// donor single entry
+		project_donor_id:{
+			type:'string',
+		},
+		project_donor_name: {
+			type: 'string',
+		},
     // stocks
     stock_type_id: {
       type: 'string',
