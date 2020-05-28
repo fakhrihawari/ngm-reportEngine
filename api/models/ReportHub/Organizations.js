@@ -34,6 +34,10 @@ module.exports = {
       type: 'string',
       required: true
     },
+    // list country that deactivate this org
+    admin0pcode_deactivate:{
+      type:'string',
+    }
 
   },
 
