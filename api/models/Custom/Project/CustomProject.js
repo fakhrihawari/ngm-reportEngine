@@ -248,6 +248,13 @@ module.exports = {
 			type: 'array'
 		},
 
+		cluster_ids: {
+			type: 'array'
+		},
+		clusters: {
+			type: 'array'
+		},
+
     reporting_period_type: {
       type: 'string',
       required: true
