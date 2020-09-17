@@ -825,7 +825,14 @@ module.exports = {
 	version: {
 		type: 'string',
 		required: true
-	}
+	},
+
+	cluster_ids: {
+			type: 'array'
+		},
+		clusters: {
+			type: 'array'
+		},
 
 	},
 

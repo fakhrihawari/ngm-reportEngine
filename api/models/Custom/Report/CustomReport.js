@@ -250,6 +250,13 @@ module.exports = {
 
 	},
 
+	cluster_ids: {
+		type: 'array'
+	},
+	clusters: {
+		type: 'array'
+	},
+
   // updateOrCreate
     // http://stackoverflow.com/questions/25936910/sails-js-model-insert-or-update-records
   updateOrCreate: function( parent, criteria, values ){
