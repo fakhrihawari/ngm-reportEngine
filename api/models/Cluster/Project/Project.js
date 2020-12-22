@@ -271,7 +271,11 @@ module.exports = {
 		},
 		activity_description_other: {
 			type: 'string'
+		},
+		clusters:{
+			type:'array'
 		}
+
 
 	},
 

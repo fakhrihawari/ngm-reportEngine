@@ -224,6 +224,9 @@ module.exports = {
 		},
 		project_type_other: {
 			type: 'string'
+		},
+		clusters: {
+			type: 'array'
 		}
 
 	},

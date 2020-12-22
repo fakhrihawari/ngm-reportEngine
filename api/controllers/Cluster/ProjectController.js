@@ -954,6 +954,12 @@ var ProjectController = {
           Report.findOne( { project_id: project_update.id, report_month: d.report_month, report_year: d.report_year } ).then( function ( report ){
             if( !report ) { report = { id: null } }
             if ( report ) { d.report_status = report.report_status; d.report_active = report.report_active, d.updatedAt = report.updatedAt }
+            if ( report ) { d.report_status = report.report_status; d.report_active = report.report_active, d.updatedAt = report.updatedAt;
+              if (!report.clusters){
+                report.clusters = []
+              }
+              report.clusters = d.clusters;
+            }
             if ( d.project_status === 'complete' ) d.report_status = 'complete';
             // Report update or create
             Report.updateOrCreate( findProject, { id: report.id }, d ).exec(function( err, result ){
