@@ -379,6 +379,12 @@ var ClusterDashboardController = {
 
 								// return error
 								if (err) return res.negotiate( err );
+								// filtered out inactive user from contact list
+								if(users.length){
+									users = _.filter(users,function (user) {
+										return user.status === 'active' 
+									})
+								}
 
 								// return csv
 								json2csv({ data: users, fields: fields, fieldNames: fieldNames }, function( err, csv ) {
@@ -1845,49 +1851,100 @@ var ClusterDashboardController = {
 								// foreach location
 								locations.forEach( function( d, i ){
 
-									// popup message
-									var message = '<h5 style="text-align:center; font-size:1.5rem; font-weight:100;">' + d._id.cluster + '</h5>'
-															+ '<h5 style="text-align:center; font-size:1.3rem; font-weight:100;">' + d._id.organization + ' | ' + d._id.project_title + '</h5>'
-															+ '<div style="text-align:center">' + d._id.admin0name + '</div>'
-															if ( d._id.admin5name ) {
-																message += '<div style="text-align:center">' + d._id.admin1name + ', ' + d._id.admin2name + ', ' + d._id.admin3name + ', ' + d._id.admin4name + ', ' + d._id.admin5name + '</div>';
-															} else if ( d._id.admin4name ) {
-																message += '<div style="text-align:center">' + d._id.admin1name + ', ' + d._id.admin2name + ', ' + d._id.admin3name + ', ' + d._id.admin4name + '</div>';
-															} else if ( d._id.admin3name ) {
-																message += '<div style="text-align:center">' + d._id.admin1name + ', ' + d._id.admin2name + ', ' + d._id.admin3name + '</div>';
-															} else {
-																message += '<div style="text-align:center">' + d._id.admin1name + ', ' + d._id.admin2name + '</div>';
-															}
-															if ( d._id.site_type_name ){
-																message += '<div style="text-align:center">' + d._id.site_type_name + '</div>'
-															}
-															message += '<div style="text-align:center">' + d._id.site_name + '</div>'
-															+ '<h5 style="text-align:center; font-size:1.5rem; font-weight:100;">CONTACT</h5>'
-															+ '<div style="text-align:center">' + d._id.organization + '</div>'
-															+ '<div style="text-align:center">' + d._id.name + '</div>'
-															+ '<div style="text-align:center">' + d._id.position + '</div>'
-															+ '<div style="text-align:center">' + d._id.phone + '</div>'
-															+ '<div style="text-align:center">' + d._id.email + '</div>'
-															+ '<div align="center" style="margin-top:10px;"><a style="color:#fff;height: 30px;line-height: 30px;" class="btn" href="#/cluster/projects/summary/' + d._id.project_id +'" target="_blank">'+'Go to Project</a></div>';
+									// // popup message
+									// var message = '<h5 style="text-align:center; font-size:1.5rem; font-weight:100;">' + d._id.cluster + '</h5>'
+									// 						+ '<h5 style="text-align:center; font-size:1.3rem; font-weight:100;">' + d._id.organization + ' | ' + d._id.project_title + '</h5>'
+									// 						+ '<div style="text-align:center">' + d._id.admin0name + '</div>'
+									// 						if ( d._id.admin5name ) {
+									// 							message += '<div style="text-align:center">' + d._id.admin1name + ', ' + d._id.admin2name + ', ' + d._id.admin3name + ', ' + d._id.admin4name + ', ' + d._id.admin5name + '</div>';
+									// 						} else if ( d._id.admin4name ) {
+									// 							message += '<div style="text-align:center">' + d._id.admin1name + ', ' + d._id.admin2name + ', ' + d._id.admin3name + ', ' + d._id.admin4name + '</div>';
+									// 						} else if ( d._id.admin3name ) {
+									// 							message += '<div style="text-align:center">' + d._id.admin1name + ', ' + d._id.admin2name + ', ' + d._id.admin3name + '</div>';
+									// 						} else {
+									// 							message += '<div style="text-align:center">' + d._id.admin1name + ', ' + d._id.admin2name + '</div>';
+									// 						}
+									// 						if ( d._id.site_type_name ){
+									// 							message += '<div style="text-align:center">' + d._id.site_type_name + '</div>'
+									// 						}
+									// 						message += '<div style="text-align:center">' + d._id.site_name + '</div>'
+									// 						+ '<h5 style="text-align:center; font-size:1.5rem; font-weight:100;">CONTACT</h5>'
+									// 						+ '<div style="text-align:center">' + d._id.organization + '</div>'
+									// 						+ '<div style="text-align:center">' + d._id.name + '</div>'
+									// 						+ '<div style="text-align:center">' + d._id.position + '</div>'
+									// 						+ '<div style="text-align:center">' + d._id.phone + '</div>'
+									// 						+ '<div style="text-align:center">' + d._id.email + '</div>'
+									// 						+ '<div align="center" style="margin-top:10px;"><a style="color:#fff;height: 30px;line-height: 30px;" class="btn" href="#/cluster/projects/summary/' + d._id.project_id +'" target="_blank">'+'Go to Project</a></div>';
 
-									// create markers
-									markers[ 'marker' + counter ] = {
-										layer: 'projects',
-										lat: d._id.site_lat,
-										lng: d._id.site_lng,
-										message: message
-									};
+									// // create markers
+									// markers[ 'marker' + counter ] = {
+									// 	layer: 'projects',
+									// 	lat: d._id.site_lat,
+									// 	lng: d._id.site_lng,
+									// 	message: message
+									// };
 
-									// plus
-									counter++;
+									// // plus
+									// counter++;
 
-									// if last location
-									if( counter === length ){
+									// // if last location
+									// if( counter === length ){
 
-										// return markers
-										return res.json(200, { 'data': markers } );
+									// 	// return markers
+									// 	return res.json(200, { 'data': markers } );
 
-									}
+									// }
+
+									User.findOne({ name: d._id.name, email: d._id.email }).exec(function (err, user) {
+										
+										if (err) return res.negotiate(err);
+										// popup message
+										var message = '<h5 style="text-align:center; font-size:1.5rem; font-weight:100;">' + d._id.cluster + '</h5>'
+											+ '<h5 style="text-align:center; font-size:1.3rem; font-weight:100;">' + d._id.organization + ' | ' + d._id.project_title + '</h5>'
+											+ '<div style="text-align:center">' + d._id.admin0name + '</div>'
+										if (d._id.admin5name) {
+											message += '<div style="text-align:center">' + d._id.admin1name + ', ' + d._id.admin2name + ', ' + d._id.admin3name + ', ' + d._id.admin4name + ', ' + d._id.admin5name + '</div>';
+										} else if (d._id.admin4name) {
+											message += '<div style="text-align:center">' + d._id.admin1name + ', ' + d._id.admin2name + ', ' + d._id.admin3name + ', ' + d._id.admin4name + '</div>';
+										} else if (d._id.admin3name) {
+											message += '<div style="text-align:center">' + d._id.admin1name + ', ' + d._id.admin2name + ', ' + d._id.admin3name + '</div>';
+										} else {
+											message += '<div style="text-align:center">' + d._id.admin1name + ', ' + d._id.admin2name + '</div>';
+										}
+										if (d._id.site_type_name) {
+											message += '<div style="text-align:center">' + d._id.site_type_name + '</div>'
+										}
+										// hide contact on marker if user set their profile to private
+										if(!user.anonymous){
+											message += '<div style="text-align:center">' + d._id.site_name + '</div>'
+												+ '<h5 style="text-align:center; font-size:1.5rem; font-weight:100;">CONTACT</h5>'
+												+ '<div style="text-align:center">' + d._id.organization + '</div>'
+												+ '<div style="text-align:center">' + d._id.name + '</div>'
+												+ '<div style="text-align:center">' + d._id.position + '</div>'
+												+ '<div style="text-align:center">' + d._id.phone + '</div>'
+												+ '<div style="text-align:center">' + d._id.email + '</div>'
+										}
+										message += '<div align="center" style="margin-top:10px;"><a style="color:#fff;height: 30px;line-height: 30px;" class="btn" href="#/cluster/projects/summary/' + d._id.project_id + '" target="_blank">' + 'Go to Project</a></div>';
+
+										// create markers
+										markers['marker' + counter] = {
+											layer: 'projects',
+											lat: d._id.site_lat,
+											lng: d._id.site_lng,
+											message: message
+										};
+
+										// plus
+										counter++;
+
+										// if last location
+										if (counter === length) {
+
+											// return markers
+											return res.json(200, { 'data': markers });
+
+										}
+									})
 
 								});
 
