@@ -942,6 +942,17 @@ var UserController = {
 
   },
 
+  checkHealthDB: function (req, res) {
+    User.find().then(function(user){
+      return res.json(200,{'msg':'DB health is okay'})
+    }).catch(function (err) {
+      return res.negotiate(err);
+    })
+
+
+
+  }
+
 };
 
 module.exports = UserController;
