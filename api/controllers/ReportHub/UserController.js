@@ -946,7 +946,21 @@ var UserController = {
     User.find().then(function(user){
       return res.json(200,{'msg':'DB health is okay'})
     }).catch(function (err) {
-      return res.negotiate(err);
+      sails.hooks.email.send('server-crash-notification', {
+        name: 'Server',
+      }, {
+        to: 'ngmReportHub@gmail.com',
+        subject: 'Check ReportHub DB '
+      }, function (err) {
+
+        // return error
+        if (err) return res.negotiate(err);
+
+        // success sen email
+        return res.json(200, { 'msg': 'success send email'});
+        
+
+      });
     })
 
 
