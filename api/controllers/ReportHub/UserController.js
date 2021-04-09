@@ -943,6 +943,26 @@ var UserController = {
   },
 
   checkHealthDB: function (req, res) {
+    // Alternative for 
+    // exec = require('child_process').exec,
+    //   cmd = 'mongo --eval "db.runCommand({ping:1}).ok"';
+    // exec(cmd,
+    //   function (error, stdout, stderr) {
+    //     if (!error) {
+    //       // success
+    //       res.json({
+    //         status: 200,
+    //         out: stdout,
+    //         err: stderr
+    //       });
+    //     } else {
+    //       // return error
+    //       res.json(400, {
+    //         error: 'PDF export error, please try again!'
+    //       });
+    //     }
+    //   }
+    // );
     User.find().then(function(user){
       return res.json(200,{'msg':'DB health is okay'})
     }).catch(function (err) {
