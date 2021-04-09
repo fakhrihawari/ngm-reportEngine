@@ -29,23 +29,32 @@ var Cluster4wplusDashboardController = {
 		var excangeratescurrencies = []; 
 
          var request = require('request');
+		//  because this api use http
+		request('http://api.exchangeratesapi.io/v1/latest?access_key=1cac2dee6c4613bc44b5f16ac1ec433f&format=1', function (error, response, body) {
+			if (!error && response.statusCode == 200) {
+				newbody = JSON.parse(body);
+				excangeratescurrencies.push(newbody.rates.USD);
 
+				// console.log("EURO A DOLAR1 FUNCTION: ", typeof excangeratescurrencies);
+				return res.json(200, excangeratescurrencies);
+			}
+		})
 		//api to find exchange rates from EURO to others currencies
-			  request.get({
-						  url: 'https://api.exchangeratesapi.io/latest'
-						}, function(error, response, body) {
-						  if (error) {
-						  }
-						  else {
+			//   request.get({
+			// 			  url: 'https://api.exchangeratesapi.io/latest'
+			// 			}, function(error, response, body) {
+			// 			  if (error) {
+			// 			  }
+			// 			  else {
 			
-						   newbody = JSON.parse(body);
+			// 			   newbody = JSON.parse(body);
 						
-						  excangeratescurrencies.push(newbody.rates.USD);
+			// 			  excangeratescurrencies.push(newbody.rates.USD);
 
-						// console.log("EURO A DOLAR1 FUNCTION: ", typeof excangeratescurrencies);
-						 return res.json( 200, excangeratescurrencies);
-						}
-					});
+			// 			// console.log("EURO A DOLAR1 FUNCTION: ", typeof excangeratescurrencies);
+			// 			 return res.json( 200, excangeratescurrencies);
+			// 			}
+			// 		});
 	},
 
 	
@@ -518,16 +527,13 @@ var Cluster4wplusDashboardController = {
 
 							if(d.project_donor){
 
-								 d.project_donor.forEach(function (donororg, j){
-
-
-	                             const resultado = donorslist.find( donor => donor.project_donor_id === donororg.project_donor_id );
-
-	                             if(!resultado){
-	                             	donorslist.push(donororg);
-	                             }
-	                            
-
+								d.project_donor.forEach(function (donororg, j){
+									if (donororg && donororg.project_donor_id){
+										const resultado = donorslist.find( donor => donor.project_donor_id === donororg.project_donor_id );
+										if(!resultado){
+											donorslist.push(donororg);
+										}
+									};
 								});
 
 							}
@@ -565,8 +571,8 @@ var Cluster4wplusDashboardController = {
 
 
 						result.forEach( function( d, i ) {
-							
-							const resultado = donorslist.find( donor => donor.project_donor_id === d.project_donor_id );
+							if (d && d.project_donor_id) {
+										const resultado = donorslist.find( donor => donor.project_donor_id === d.project_donor_id );
 
 			                             if(!resultado){
 
@@ -576,6 +582,7 @@ var Cluster4wplusDashboardController = {
 			                             	}
 			                             	donorslist.push(donortoadd);
 			                             }
+							}
                         
 						});
 

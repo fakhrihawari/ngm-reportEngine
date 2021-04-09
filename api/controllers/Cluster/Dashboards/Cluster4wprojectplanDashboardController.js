@@ -30,22 +30,31 @@ var Cluster4wprojectplanDashboardController = {
 
          var request = require('request');
 
-		//api to find exchange rates from EURO to others currencies
-			  request.get({
-						  url: 'https://api.exchangeratesapi.io/latest'
-						}, function(error, response, body) {
-						  if (error) {
-						  }
-						  else {
-			
-						   newbody = JSON.parse(body);
-						
-						  excangeratescurrencies.push(newbody.rates.USD);
+		request('http://api.exchangeratesapi.io/v1/latest?access_key=1cac2dee6c4613bc44b5f16ac1ec433f&format=1', function (error, response, body) {
+			if (!error && response.statusCode == 200) {
+				newbody = JSON.parse(body);
+				excangeratescurrencies.push(newbody.rates.USD);
 
-						// console.log("EURO A DOLAR1 FUNCTION: ", typeof excangeratescurrencies);
-						 return res.json( 200, excangeratescurrencies);
-						}
-					});
+				// console.log("EURO A DOLAR1 FUNCTION: ", typeof excangeratescurrencies);
+				return res.json(200, excangeratescurrencies);
+			}
+		})
+		//api to find exchange rates from EURO to others currencies
+			//   request.get({
+			// 			  url: 'https://api.exchangeratesapi.io/latest'
+			// 			}, function(error, response, body) {
+			// 			  if (error) {
+			// 			  }
+			// 			  else {
+			
+			// 			   newbody = JSON.parse(body);
+						
+			// 			  excangeratescurrencies.push(newbody.rates.USD);
+
+			// 			// console.log("EURO A DOLAR1 FUNCTION: ", typeof excangeratescurrencies);
+			// 			 return res.json( 200, excangeratescurrencies);
+			// 			}
+			// 		});
 	},
 
 	// get params from req
@@ -1209,18 +1218,17 @@ var Cluster4wprojectplanDashboardController = {
 							if(d.project_donor.length > 0){
 
 								 d.project_donor.forEach(function (projdonor, j){
+									if (projdonor && projdonor.project_donor_id){
 
-								 	if(projdonor.project_donor_id){
 
+			                            const resultado = donorslist.find( donor => donor.project_donor_id === projdonor.project_donor_id );
 
-			                             const resultado = donorslist.find( donor => donor.project_donor_id === projdonor.project_donor_id );
-
-			                             if(!resultado){
+			                            if(!resultado){
 			                             	donorslist.push(projdonor);
 			                             	//console.log("METI EL DONANTE: ", projdonor);
 
-			                             }
-			                         }
+			                            }
+			                        }
 			                            
 
 								});
@@ -1280,7 +1288,7 @@ var Cluster4wprojectplanDashboardController = {
 
 													projrecord.project_donor.forEach(function (projdonor, j){
 
-													if(projdonor.project_donor_id){
+													if( projdonor && projdonor.project_donor_id){
 
 
 					                                  const resultado = donorslist.find( donor => donor.project_donor_id === projdonor.project_donor_id );
@@ -4503,7 +4511,7 @@ var Cluster4wprojectplanDashboardController = {
 												
 
 
-												if(don.project_donor_id){
+												if(don && don.project_donor_id){
 
 
 
